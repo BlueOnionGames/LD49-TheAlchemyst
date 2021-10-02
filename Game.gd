@@ -65,3 +65,7 @@ func _on_HeatGauge_stir_in_danger():
 func _on_HeatGauge_stir_out_of_danger():
 	self.in_danger = false
 	time_in_danger = 0
+
+
+func _on_btnPause_toggled(button_pressed):
+	get_tree().paused = button_pressed

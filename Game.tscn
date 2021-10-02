@@ -187,6 +187,19 @@ position = Vector2( 489, 476 )
 
 [node name="ProgressCircle" parent="CanvasLayer" instance=ExtResource( 4 )]
 
+[node name="btnPause" type="Button" parent="CanvasLayer"]
+pause_mode = 2
+margin_left = 29.0
+margin_top = 37.0
+margin_right = 79.0
+margin_bottom = 57.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CPUParticles" type="CPUParticles" parent="."]
 emitting = false
 amount = 30
@@ -223,3 +236,4 @@ anims/gameover = SubResource( 10 )
 [connection signal="stir_in_range" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_in_range"]
 [connection signal="stir_out_of_danger" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_out_of_danger"]
 [connection signal="stir_out_of_range" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_out_of_range"]
+[connection signal="toggled" from="CanvasLayer/btnPause" to="." method="_on_btnPause_toggled"]
