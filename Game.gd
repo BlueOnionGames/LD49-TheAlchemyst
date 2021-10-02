@@ -149,10 +149,8 @@ func brew_potion() -> void:
 func apply_upgrade(upgrade: Upgrade):
 	if upgrade.custom_effect:
 		match upgrade.identifier:
-			"stabiliser_1":
-				self.gauge.stir_decay *= 0.8
-			"stabiliser_2":
-				self.gauge.stir_decay *= 0.8
+			"dbg_spawn_label":
+				self.label_spawner.spawn_label("Test")
 			_:
 				print("Unhandled upgrade identifier: %s" % upgrade.identifier)
 	else:

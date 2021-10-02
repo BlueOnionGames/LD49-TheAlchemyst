@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Spawn label"
+description = "For debugging purposes only!"
+identifier = "dbg_spawn_label"
+cost = 0
+purchased = false
+order = 0
+single_purchase = false
+custom_effect = true
+stat = ""
+stat_multiplier = 1.0
+stat_addition = 0.0
