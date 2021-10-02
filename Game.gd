@@ -15,6 +15,7 @@ onready var brew_timer := find_node("AutoBrewTimer") as Timer
 onready var brew_checkbox := find_node("AutoBrewCheckBox") as CheckBox
 onready var brew_interval_lbl := find_node("AutoBrewIntervalLabel") as Label
 onready var brew_container := find_node("AutoBrewContainer") as Container
+onready var stats_label := find_node("StatsLabel") as RichTextLabel
 
 export(String, FILE) var upgrade_dir := "res://Upgrades"
 
@@ -43,6 +44,11 @@ func _ready():
 
 
 func _process(delta):
+	Stats.playtime += delta
+	if self.stats_label != null:
+		self.stats_label.text = ""
+		for attribute in Stats._initial_attributes:
+			self.stats_label.text = "%s %s: %s\n" % [self.stats_label.text, attribute, Stats.get(attribute)]
 	if get_tree().paused: return
 
 	if self.in_range:
