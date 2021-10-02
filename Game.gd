@@ -94,7 +94,7 @@ func load_upgrades() -> void:
 		if file.begins_with("u_"):
 			print("Found upgrade %s" % file)
 			var upgrade = load("%s/%s" % [self.upgrade_dir, file]) as Upgrade
-			if upgrade != null && (DEBUGGING || !upgrade.identifier.starts_with('dbg_')):
+			if upgrade != null && (DEBUGGING || !upgrade.identifier.begins_with('dbg_')):
 				self.upgrades.append(upgrade)
 			else:
 				print("Could not load upgrade %s, got null!" % file)
