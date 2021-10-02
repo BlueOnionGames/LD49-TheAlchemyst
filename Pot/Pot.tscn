@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Pot/pot.glb" type="PackedScene" id=1]
 [ext_resource path="res://Pot/Pot.gd" type="Script" id=2]
@@ -180,6 +180,60 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector3( 1, 1, 1 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Pot:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "buildup"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pot:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.01, 0.01, -0.01 ), Vector3( 0, 0, 0 ), Vector3( 0, -0.01, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.01, 1.01, 1.01 ), Vector3( 1, 1, 1 ), Vector3( 0.99, 0.99, 0.99 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spoon:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.05, 0.01, 0.0 ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "hiteffect"
@@ -272,6 +326,7 @@ anims/Stir = SubResource( 3 )
 
 [node name="AnimPot" type="AnimationPlayer" parent="." index="4"]
 anims/RESET = SubResource( 8 )
+anims/buildup = SubResource( 13 )
 anims/hiteffect = SubResource( 9 )
 
 [node name="FireParticles" type="CPUParticles" parent="." index="5"]
