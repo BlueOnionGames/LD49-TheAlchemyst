@@ -24,6 +24,7 @@ var time_speedup := 1.0
 var time_till_potion := 4.0
 var time_till_bubbles := 2.0
 var explosion_trigger := 2.0
+var flame_randomness := 1.0
 var buildup_speed := 0.5
 
 var _initial_attributes: Dictionary
@@ -79,6 +80,7 @@ func get_attributes() -> Dictionary:
 		"time_till_potion": self.time_till_potion,
 		"time_till_bubbles": self.time_till_bubbles,
 		"explosion_trigger": self.explosion_trigger,
+		"flame_randomness": self.flame_randomness,
 		"buildup_speed": self.buildup_speed,
 	}
 

@@ -73,7 +73,10 @@ func reset() -> void:
 
 
 func new_flame() -> void:
-	self.set_flame(rand_range(Stats.danger_range + Stats.stir_strength, 1.0))
+	var prev_flame := self.flame_strength
+	var randomness := rand_range(-1.0, 1.0) * Stats.flame_randomness
+	var new_flame := prev_flame + randomness
+	self.set_flame(max(new_flame, Stats.danger_range + Stats.stir_strength))
 
 
 func set_flame(flame: float) -> void:
