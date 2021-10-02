@@ -33,6 +33,7 @@ func show_tooltip(upgrade: Upgrade) -> void:
 		if upgrade.purchased:
 			tex_coin.texture = TEX_BOUGHT
 			lbl_price.text = "Bought"
+			lbl_price.add_color_override("font_color", self._default_color)
 		else:
 			tex_coin.texture = TEX_COIN
 			lbl_price.text = "%d" % upgrade.cost
