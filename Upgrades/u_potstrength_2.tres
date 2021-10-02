@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Reinforced Steel Pot"
-description = "An even sturdier pot, taking much longer to heat up but also much longer to explode."
+description = "An even sturdier pot, taking much longer to explode but also much longer to heat up."
 identifier = ""
 cost = 75
 purchased = false
