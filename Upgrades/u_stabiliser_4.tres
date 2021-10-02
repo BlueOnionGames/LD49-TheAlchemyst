@@ -15,3 +15,6 @@ custom_effect = false
 stat = "stir_decay"
 stat_multiplier = 0.5
 stat_addition = 0.0
+stat2 = ""
+stat2_multiplier = 1.0
+stat2_addition = 0.0

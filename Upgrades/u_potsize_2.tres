@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Stabiliser I"
-description = "Makes your potions more stable."
-identifier = "stabiliser_1"
-cost = 15
+name = "Biggerer Pot"
+description = "Get an even bigger pot, allowing you to brew twice as much potions per batch."
+identifier = ""
+cost = 60
 purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-stat = "stir_decay"
-stat_multiplier = 0.8
+stat = "potions_per_batch"
+stat_multiplier = 2.0
 stat_addition = 0.0
-stat2 = ""
-stat2_multiplier = 1.0
+stat2 = "stir_range"
+stat2_multiplier = 0.8
 stat2_addition = 0.0

@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Stabiliser I"
-description = "Makes your potions more stable."
-identifier = "stabiliser_1"
-cost = 15
+name = "Hormones"
+description = "Apparently, potions brew 25% faster if you just add some simple hormones! How nice!"
+identifier = ""
+cost = 50
 purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-stat = "stir_decay"
-stat_multiplier = 0.8
+stat = "time_till_potion"
+stat_multiplier = 0.75
 stat_addition = 0.0
-stat2 = ""
-stat2_multiplier = 1.0
+stat2 = "danger_range"
+stat2_multiplier = 1.25
 stat2_addition = 0.0

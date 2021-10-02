@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Stabiliser I"
-description = "Makes your potions more stable."
-identifier = "stabiliser_1"
-cost = 15
+name = "Steel Pot"
+description = "A sturdier pot, taking longer to heat up and to explode."
+identifier = ""
+cost = 40
 purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-stat = "stir_decay"
-stat_multiplier = 0.8
+stat = "explosion_trigger"
+stat_multiplier = 1.25
 stat_addition = 0.0
-stat2 = ""
-stat2_multiplier = 1.0
+stat2 = "stir_strength"
+stat2_multiplier = 0.75
 stat2_addition = 0.0

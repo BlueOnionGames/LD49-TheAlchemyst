@@ -6,8 +6,8 @@
 script = ExtResource( 1 )
 name = "Stabiliser II"
 description = "Makes your potions even more stable."
-identifier = "stabiliser_2"
-cost = 50
+identifier = ""
+cost = 60
 purchased = false
 order = 0
 single_purchase = true
@@ -15,3 +15,6 @@ custom_effect = false
 stat = "stir_decay"
 stat_multiplier = 0.8
 stat_addition = 0.0
+stat2 = ""
+stat2_multiplier = 1.0
+stat2_addition = 0.0
