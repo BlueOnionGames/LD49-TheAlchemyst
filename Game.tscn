@@ -350,8 +350,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
 
-[node name="Tooltip" parent="CanvasLayer" instance=ExtResource( 6 )]
-
 [node name="PauseMsg" type="HBoxContainer" parent="CanvasLayer"]
 pause_mode = 2
 anchor_right = 1.0
@@ -454,6 +452,9 @@ custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "LOAD LAST SAVE"
 flat = true
+
+[node name="Tooltip" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
 
 [node name="LblBottom" type="Label" parent="CanvasLayer"]
 margin_left = 15.0
