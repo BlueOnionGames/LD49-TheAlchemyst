@@ -17,6 +17,7 @@ onready var msh_border := find_node("Border") as MeshInstance
 onready var anim_spoon := find_node("AnimSpoon") as AnimationPlayer
 onready var anim_pot := find_node("AnimPot") as AnimationPlayer
 onready var pot_light := find_node("PotLight") as OmniLight
+onready var fire_light := find_node("FireLight") as OmniLight
 onready var liquid := find_node("Liquid") as CSGMesh
 onready var liquid_particles := find_node("LiquidParticles") as CPUParticles
 onready var fire_particles := find_node("FireParticles") as CPUParticles
@@ -85,6 +86,7 @@ func set_fire(fire: bool) -> void:
 	if fire_particles == null: return
 	emit_fire = fire
 	fire_particles.emitting = emit_fire
+	fire_light.visible = emit_fire
 
 
 func set_bubble_color(color: Color) -> void:

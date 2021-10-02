@@ -350,3 +350,10 @@ angle_random = 1.0
 scale_amount_random = 1.0
 scale_amount_curve = SubResource( 7 )
 color_ramp = SubResource( 12 )
+
+[node name="FireLight" type="OmniLight" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.339319, 0.378833 )
+light_color = Color( 1, 0.678431, 0, 1 )
+light_specular = 2.0
+omni_range = 0.915889
+omni_attenuation = 0.5
