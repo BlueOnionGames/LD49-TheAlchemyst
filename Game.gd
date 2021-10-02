@@ -179,6 +179,7 @@ func _on_BtnRestart_pressed():
 func _on_BtnReload_pressed():
 	self.reset()
 	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
 	Stats.load_stats()
 	self.pause(true, true)
 
