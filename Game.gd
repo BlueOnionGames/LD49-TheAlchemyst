@@ -7,7 +7,7 @@ onready var pot := find_node("Pot") as Pot
 onready var progress_circle := find_node("ProgressCircle") as ProgressCircle
 onready var anim_player := find_node("MainAnimationPlayer") as AnimationPlayer
 onready var upgrade_container := find_node("UpgradeContainer") as GridContainer
-onready var tooltip := find_node("Tooltip") as Tooltip
+onready var tooltip := find_node("Tooltip")
 onready var lbl_coins := find_node("LblCoins") as Label
 onready var msg_pause := find_node("PauseMsg") as Container
 onready var label_spawner := find_node("LabelSpawner") as LabelSpawner
@@ -108,7 +108,7 @@ func load_upgrades() -> void:
 	for child in self.upgrade_container.get_children():
 		self.upgrade_container.remove_child(child)
 	for upgrade in self.upgrades:
-		var button := preload("res://Upgrades/UpgradeButton.tscn").instance(PackedScene.GEN_EDIT_STATE_INSTANCE) as UpgradeButton
+		var button := preload("res://Upgrades/UpgradeButton.tscn").instance(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		button.upgrade = upgrade
 		upgrade.purchased = false
 		button.connect("upgrade_bought", self, "apply_upgrade")
