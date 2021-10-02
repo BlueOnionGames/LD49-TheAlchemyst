@@ -14,6 +14,7 @@ signal save_done
 var save_file := "user://game1.sav"
 
 var coins := 0 setget set_coins
+var lifetime_coins := 0
 var stir_decay := 0.3  # per second
 var stir_strength := 0.2
 var stir_range := 0.20 setget set_stir_range
@@ -31,6 +32,8 @@ var buildup_speed := 0.5
 var stability := 1.0
 var autobrew_interval := 1.0 setget set_autobrew_interval
 var autobrew_enabled := true setget set_autobrew_enabled
+var manual_stirs := 0
+var playtime := 0.0
 
 var _initial_attributes: Dictionary
 
@@ -54,6 +57,7 @@ func reset(skip_attributes := false) -> void:
 
 func set_coins(cns: int) -> void:
 	if cns != coins:
+		lifetime_coins += max(0, cns - coins)
 		coins = cns
 		self.emit_signal("coins_changed", coins)
 
@@ -85,6 +89,7 @@ func set_autobrew_enabled(enabled: bool) -> void:
 func get_attributes() -> Dictionary:
 	return {
 		"coins": self.coins,
+		"lifetime_coins": self.lifetime_coins,
 		"stir_decay": self.stir_decay,
 		"stir_strength": self.stir_strength,
 		"stir_range": self.stir_range,
@@ -102,6 +107,8 @@ func get_attributes() -> Dictionary:
 		"stability": self.stability,
 		"autobrew_interval": self.autobrew_interval,
 		"autobrew_enabled": self.autobrew_enabled,
+		"manual_stirs": self.manual_stirs,
+		"playtime": self.playtime,
 	}
 
 

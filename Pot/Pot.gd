@@ -40,6 +40,7 @@ func _ready() -> void:
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("game_stir") and self.is_hovered:
+		Stats.manual_stirs += 1
 		self.stir()
 		get_tree().set_input_as_handled()
 
