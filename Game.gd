@@ -157,12 +157,13 @@ func apply_upgrade(upgrade: Upgrade):
 				self.label_spawner.spawn_label("Test")
 			_:
 				print("Unhandled upgrade identifier: %s" % upgrade.identifier)
-	else:
-		var stat = Stats.get(upgrade.stat)
-		Stats.set(upgrade.stat, stat * upgrade.stat_multiplier + upgrade.stat_addition)
-		if upgrade.stat2 != "":
-			stat = Stats.get(upgrade.stat2)
-			Stats.set(upgrade.stat2, stat * upgrade.stat2_multiplier + upgrade.stat2_addition)
+	for effect in upgrade.effects:
+		var seff := effect as StatEffect
+		if seff == null:
+			print("Invalid stat effect found in upgrade %s!" % upgrade.name)
+			continue
+		var stat = Stats.get(seff.name)
+		Stats.set(seff.name, stat * seff.multiplier + seff.addition)
 
 
 func _on_btnSave_pressed():

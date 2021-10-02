@@ -1,7 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://coin.png" type="Texture" id=2]
+[ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+name = "coins"
+multiplier = 2.0
+addition = 10.0
 
 [resource]
 script = ExtResource( 1 )
@@ -14,6 +21,4 @@ purchased = false
 order = 0
 single_purchase = false
 custom_effect = false
-stat = "coins"
-stat_multiplier = 1.0
-stat_addition = 10.0
+effects = [ SubResource( 1 ) ]

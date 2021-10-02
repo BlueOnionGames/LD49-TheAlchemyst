@@ -1,6 +1,19 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+[ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+name = "stir_range"
+multiplier = 1.25
+addition = 0.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+name = "danger_range"
+multiplier = 1.2
+addition = 0.0
 
 [resource]
 script = ExtResource( 1 )
@@ -12,9 +25,4 @@ purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-stat = "stir_range"
-stat_multiplier = 1.25
-stat_addition = 0.0
-stat2 = "danger_range"
-stat2_multiplier = 1.2
-stat2_addition = 0.0
+effects = [ SubResource( 1 ), SubResource( 2 ) ]
