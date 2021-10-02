@@ -15,6 +15,7 @@ var coins := 0 setget set_coins
 var stir_decay := 0.3  # per second
 var stir_strength := 0.2
 var stir_range := 0.25 setget set_stir_range
+var stir_speed := 1.0
 var danger_range := 0.1 setget set_danger_range
 var potions_brewed := 0
 var potions_per_batch := 1
@@ -69,6 +70,7 @@ func get_attributes() -> Dictionary:
 		"stir_decay": self.stir_decay,
 		"stir_strength": self.stir_strength,
 		"stir_range": self.stir_range,
+		"stir_speed": self.stir_speed,
 		"danger_range": self.danger_range,
 		"potions_brewed": self.potions_brewed,
 		"potions_per_batch": self.potions_per_batch,

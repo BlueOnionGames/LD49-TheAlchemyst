@@ -38,6 +38,14 @@ func _ready() -> void:
 	self._border_default = msh_border.get_surface_material(0).albedo_color
 
 
+func _unhandled_input(event) -> void:
+	if event.is_action_pressed("game_stir") and self.is_hovered:
+		anim_spoon.play("Stir", Stats.stir_speed)
+		anim_pot.play("hiteffect")
+		self.emit_signal("stirred")
+		get_tree().set_input_as_handled()
+
+
 func reset() -> void:
 	self.is_hovered = false
 	self.buildup_strength = 0
@@ -50,13 +58,6 @@ func reset() -> void:
 
 func set_hovered(hovered: bool) -> void:
 	self.is_hovered = hovered
-
-
-func _unhandled_input(event) -> void:
-	if event.is_action_pressed("game_stir") and self.is_hovered:
-		anim_spoon.play("Stir")
-		anim_pot.play("hiteffect")
-		self.emit_signal("stirred")
 
 
 func set_buildup_strength(strength: float) -> void:
