@@ -11,6 +11,10 @@ onready var tooltip := find_node("Tooltip") as Tooltip
 onready var lbl_coins := find_node("LblCoins") as Label
 onready var msg_pause := find_node("PauseMsg") as Container
 onready var label_spawner := find_node("LabelSpawner") as LabelSpawner
+onready var brew_timer := find_node("AutoBrewTimer") as Timer
+onready var brew_checkbox := find_node("AutoBrewCheckBox") as CheckBox
+onready var brew_interval_lbl := find_node("AutoBrewIntervalLabel") as Label
+onready var brew_container := find_node("AutoBrewContainer") as Container
 
 export(String, FILE) var upgrade_dir := "res://Upgrades"
 
@@ -25,6 +29,7 @@ var in_danger := false
 func _ready():
 	pot.emit_fire = true
 	pot.emit_bubbles = false
+	self.brew_container.visible = false
 	self.load_upgrades()
 	Stats.connect("coins_changed", self, "update_coins_label")
 	yield(get_tree(), "idle_frame")
@@ -155,6 +160,12 @@ func apply_upgrade(upgrade: Upgrade):
 		match upgrade.identifier:
 			"dbg_spawn_label":
 				self.label_spawner.spawn_label("Test")
+			"auto_brewer":
+				self.brew_container.visible = true
+				Stats.connect("autobrew_interval_changed", self.brew_timer, "set_wait_time")
+				Stats.connect("autobrew_interval_changed", self, "set_autobrew_interval_label")
+				Stats.connect("autobrew_enabled_changed", self, "set_autobrew_timer")
+				self.brew_timer.wait_time = Stats.autobrew_interval
 			_:
 				print("Unhandled upgrade identifier: %s" % upgrade.identifier)
 	for effect in upgrade.effects:
@@ -198,3 +209,32 @@ func pause(pause: bool = true, show_message := true):
 	get_tree().set_pause(pause)
 	if show_message || not pause:
 		msg_pause.visible = pause
+
+
+func set_autobrew_timer(enabled: bool) -> void:
+	self.brew_checkbox.pressed = enabled
+	if enabled:
+		self.brew_timer.start()
+	else:
+		self.brew_timer.stop()
+
+
+func set_autobrew_interval_label(interval: float) -> void:
+	self.brew_interval_lbl.text = "%.1f" % interval
+
+
+func _on_AutobrewerLabel_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		Stats.autobrew_enabled = !Stats.autobrew_enabled
+
+
+func _on_AutobrewerCheckBox_toggled(button_pressed) -> void:
+	Stats.autobrew_enabled = button_pressed
+
+
+func _on_BtnAutoBrewIntervalMinus_pressed():
+	Stats.autobrew_interval = max(0.1, Stats.autobrew_interval - 0.1)
+
+
+func _on_BtnAutoBrewIntervalPlus_pressed():
+	Stats.autobrew_interval = min(10, Stats.autobrew_interval + 0.1)

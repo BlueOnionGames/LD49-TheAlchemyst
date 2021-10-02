@@ -40,11 +40,14 @@ func _ready() -> void:
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("game_stir") and self.is_hovered:
-		anim_spoon.play("stir", -1, Stats.stir_speed)
-		anim_pot.play("hiteffect")
-		self.emit_signal("stirred")
+		self.stir()
 		get_tree().set_input_as_handled()
 
+
+func stir() -> void:
+	anim_spoon.play("stir", -1, Stats.stir_speed)
+	anim_pot.play("hiteffect")
+	self.emit_signal("stirred")
 
 func reset() -> void:
 	self.is_hovered = false

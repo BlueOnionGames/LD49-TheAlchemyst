@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+[ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+name = "stability"
+multiplier = 0.95
+addition = 0.0
+
+[resource]
+script = ExtResource( 1 )
+name = "Auto-brewer"
+description = "Spares you a click every now and then."
+identifier = "auto_brewer"
+cost = 250
+purchased = false
+order = 0
+single_purchase = true
+custom_effect = true
+effects = [ SubResource( 1 ) ]

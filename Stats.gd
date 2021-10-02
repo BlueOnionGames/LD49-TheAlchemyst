@@ -4,6 +4,8 @@ class_name StatsClass
 signal coins_changed
 signal stir_range_changed
 signal danger_range_changed
+signal autobrew_interval_changed
+signal autobrew_enabled_changed
 signal load_start
 signal load_done
 signal save_start
@@ -26,6 +28,8 @@ var time_till_bubbles := 2.0
 var explosion_trigger := 2.0
 var flame_randomness := 1.0
 var buildup_speed := 0.5
+var autobrew_interval := 1.0 setget set_autobrew_interval
+var autobrew_enabled := true setget set_autobrew_enabled
 
 var _initial_attributes: Dictionary
 
@@ -65,6 +69,18 @@ func set_danger_range(new_range: float) -> void:
 		self.emit_signal("danger_range_changed", danger_range)
 
 
+func set_autobrew_interval(interval: float) -> void:
+	if !is_equal_approx(autobrew_interval, interval):
+		autobrew_interval = interval
+		self.emit_signal("autobrew_interval_changed", autobrew_interval)
+
+
+func set_autobrew_enabled(enabled: bool) -> void:
+	if autobrew_enabled != enabled:
+		autobrew_enabled = enabled
+		self.emit_signal("autobrew_enabled_changed", autobrew_enabled)
+
+
 func get_attributes() -> Dictionary:
 	return {
 		"coins": self.coins,
@@ -82,6 +98,8 @@ func get_attributes() -> Dictionary:
 		"explosion_trigger": self.explosion_trigger,
 		"flame_randomness": self.flame_randomness,
 		"buildup_speed": self.buildup_speed,
+		"autobrew_interval": self.autobrew_interval,
+		"autobrew_enabled": self.autobrew_enabled,
 	}
 
 
