@@ -27,7 +27,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 5 )
-shader_param/background_color = Color( 0.286275, 0.286275, 0.286275, 1 )
+shader_param/background_color = Color( 0.29, 0.29, 0.29, 1 )
 shader_param/foreground_color = Color( 0.14, 0.36, 0.25, 1 )
 shader_param/progress = 0.0
 shader_param/gradient = ExtResource( 1 )

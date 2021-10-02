@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Stabiliser I"
+description = "Makes your potions more stable."
+identifier = "stabiliser_1"
+cost = 10
+purchased = false
+order = 0
+single_purchase = true
+custom_effect = false
+stat = "stir_decay"
+stat_multiplier = 0.8
+stat_addition = 0.0

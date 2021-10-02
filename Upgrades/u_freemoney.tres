@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+[ext_resource path="res://coin.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Free money!"
+description = "Have some free money!"
+identifier = "dbg_freemoney"
+cost = 0
+texture = ExtResource( 2 )
+purchased = false
+order = 0
+single_purchase = false
+custom_effect = false
+stat = "coins"
+stat_multiplier = 1.0
+stat_addition = 10.0

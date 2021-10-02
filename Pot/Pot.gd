@@ -9,7 +9,7 @@ export(Color) var liquid_color := Color(0.3, 0.5, 0.75, 0.5) setget set_liquid_c
 export(Color) var overheat_color := Color(0.54, 0, 0)
 
 export(bool) var emit_bubbles := false setget set_bubbles
-export(bool) var emit_fire := false setget set_fire
+export(bool) var emit_fire := true setget set_fire
 export(bool) var liquid_light := false setget set_liquid_light
 
 onready var msh_pot := find_node("Pot") as MeshInstance
@@ -35,6 +35,14 @@ func _ready() -> void:
 	self.set_bubbles(self.emit_bubbles)
 	self._pot_default = msh_pot.get_surface_material(0).albedo_color
 	self._border_default = msh_border.get_surface_material(0).albedo_color
+
+
+func reset() -> void:
+	self.is_hovered = false
+	self.buildup_strength = 0
+	self.emit_bubbles = false
+	self.emit_fire = true
+	self.liquid_light = false
 
 
 func set_hovered(hovered: bool) -> void:

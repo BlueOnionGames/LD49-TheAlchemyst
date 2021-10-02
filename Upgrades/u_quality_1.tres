@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Potion Quality I"
+description = "Make better potions = get more money per potion. Easy!"
+identifier = "quality_1"
+cost = 5
+purchased = false
+order = 0
+single_purchase = true
+custom_effect = false
+stat = "coins_per_potion"
+stat_multiplier = 1.0
+stat_addition = 1.0
