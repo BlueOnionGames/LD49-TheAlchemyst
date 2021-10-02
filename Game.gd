@@ -32,6 +32,10 @@ func _ready():
 	# Start paused
 	self.pause()
 
+	if not DEBUGGING:
+		$CanvasLayer/btnSave.visible = false
+		$CanvasLayer/btnReset.visible = false
+
 
 func _process(delta):
 	if get_tree().paused: return
