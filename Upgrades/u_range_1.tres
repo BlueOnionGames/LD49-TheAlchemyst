@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Bigger Spoon"
+description = "Everybody knows you can brew potions way easier if you use a bigger spoon."
+identifier = ""
+cost = 50
+purchased = false
+order = 0
+single_purchase = true
+custom_effect = false
+stat = "stir_range"
+stat_multiplier = 1.25
+stat_addition = 0.0
+stat2 = "danger_range"
+stat2_multiplier = 1.2
+stat2_addition = 0.0
