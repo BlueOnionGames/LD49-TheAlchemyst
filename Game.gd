@@ -80,6 +80,8 @@ func load_upgrades() -> void:
 		print("Could not list upgrades! Error number: %d" % err)
 		return
 
+	print("Loading upgrades...")
+
 	var file = dir.get_next()
 	while file != "":
 		if file.begins_with("u_"):
@@ -177,4 +179,13 @@ func _on_BtnRestart_pressed():
 
 func _on_BtnReload_pressed():
 	self.reset()
+	yield(get_tree(), "idle_frame")
 	Stats.load_stats()
+
+
+func _on_SaveTimer_timeout():
+	Stats.save_stats()
+
+
+func pause(pause: bool = true):
+	get_tree().set_pause(pause)

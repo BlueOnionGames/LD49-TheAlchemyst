@@ -72,6 +72,7 @@ func get_attributes() -> Dictionary:
 
 
 func save_stats() -> void:
+	print("Saving stats...")
 	self.emit_signal("save_start")
 	var file = File.new()
 	file.open(self.save_file, File.WRITE)
@@ -81,6 +82,7 @@ func save_stats() -> void:
 
 
 func load_stats() -> void:
+	print("Loading stats...")
 	self.emit_signal("load_start")
 	get_tree().paused = true
 	var file = File.new()
