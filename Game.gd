@@ -5,7 +5,7 @@ const DEBUGGING := true
 onready var gauge := find_node("HeatGauge") as HeatGauge
 onready var pot := find_node("Pot") as Pot
 onready var progress_circle := find_node("ProgressCircle") as ProgressCircle
-onready var anim_player := find_node("AnimationPlayer") as AnimationPlayer
+onready var anim_player := find_node("MainAnimationPlayer") as AnimationPlayer
 onready var upgrade_container := find_node("UpgradeContainer") as GridContainer
 onready var tooltip := find_node("Tooltip") as Tooltip
 onready var lbl_coins := find_node("LblCoins") as Label
@@ -40,7 +40,7 @@ func _ready():
 
 func _process(delta):
 	if self.in_range:
-		time_in_range += delta
+		time_in_range += delta * Stats.time_speedup
 		if time_in_range >= time_bubbles:
 			pot.emit_bubbles = true
 

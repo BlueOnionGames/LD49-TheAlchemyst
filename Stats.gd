@@ -19,6 +19,7 @@ var danger_range := 0.1 setget set_danger_range
 var potions_brewed := 0
 var potions_per_batch := 1
 var coins_per_potion := 1
+var time_speedup := 1.0
 
 var _initial_attributes: Dictionary
 
@@ -62,12 +63,13 @@ func get_attributes() -> Dictionary:
 	return {
 		"coins": self.coins,
 		"stir_decay": self.stir_decay,
-		"potions_brewed": self.potions_brewed,
-		"potions_per_batch": self.potions_per_batch,
-		"coins_per_potion": self.coins_per_potion,
 		"stir_strength": self.stir_strength,
 		"stir_range": self.stir_range,
 		"danger_range": self.danger_range,
+		"potions_brewed": self.potions_brewed,
+		"potions_per_batch": self.potions_per_batch,
+		"coins_per_potion": self.coins_per_potion,
+		"time_speedup": self.time_speedup,
 	}
 
 
