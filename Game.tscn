@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Pot/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HeatGauge/HeatGauge.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=8]
 [ext_resource path="res://coin.png" type="Texture" id=9]
 [ext_resource path="res://Progress/LabelSpawner.gd" type="Script" id=10]
+[ext_resource path="res://Pot/smoke_particles.png" type="Texture" id=11]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 12, 5 )
@@ -35,23 +36,25 @@ size = Vector3( 0.5, 0.5, 0.5 )
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
+flags_fixed_size = true
 flags_do_not_receive_shadows = true
 vertex_color_use_as_albedo = true
 params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+albedo_texture = ExtResource( 11 )
 metallic_specular = 0.0
 
 [sub_resource type="QuadMesh" id=6]
 material = SubResource( 5 )
 
 [sub_resource type="Curve" id=7]
-_data = [ Vector2( 0, 1 ), 0.0, -2.06091e-07, 0, 0, Vector2( 1, 0 ), -0.751996, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, -2.37552, 0, 0, Vector2( 0.99452, 0.339773 ), -1.54545, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=8]
-offsets = PoolRealArray( 0, 0.265193, 0.558011, 0.740331 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.997167, 1, 0.83, 1, 0.853837, 0.86, 0.4902, 1, 0.229502, 0.23, 0.2001, 1 )
+offsets = PoolRealArray( 0, 0.265193, 0.535088, 0.769006 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0.42, 0.42, 0.42, 1, 0.23, 0.23, 0.23, 1 )
 
 [sub_resource type="DynamicFont" id=15]
 size = 12
@@ -270,27 +273,21 @@ material/0 = null
 [node name="ExplosionParticles" type="CPUParticles" parent="."]
 pause_mode = 2
 emitting = false
-amount = 30
-lifetime = 2.0
+amount = 50
+lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
 mesh = SubResource( 6 )
 emission_shape = 1
 emission_sphere_radius = 0.6
-direction = Vector3( 0, 1, 0 )
-spread = 180.0
+direction = Vector3( 0, 0, 0 )
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-initial_velocity_random = 1.0
-angular_velocity = 10.0
-angular_velocity_random = 1.0
-linear_accel = 2.0
-linear_accel_random = 1.0
-radial_accel = 10.0
-radial_accel_random = 1.0
+radial_accel = 6.0
+radial_accel_random = 0.5
+damping = 2.5
 angle = 360.0
 angle_random = 1.0
-scale_amount = 0.5
+scale_amount = 0.4
 scale_amount_random = 0.5
 scale_amount_curve = SubResource( 7 )
 color_ramp = SubResource( 8 )
@@ -373,6 +370,7 @@ text = "Upgrades"
 
 [node name="AutoBrewContainer" type="HBoxContainer" parent="CanvasLayer/LeftContainer"]
 pause_mode = 2
+visible = false
 margin_top = 56.0
 margin_right = 202.0
 margin_bottom = 82.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Pot/pot.glb" type="PackedScene" id=1]
 [ext_resource path="res://Pot/Pot.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Pot/mat_pot_border.tres" type="Material" id=5]
 [ext_resource path="res://Pot/mat_wood.tres" type="Material" id=6]
 [ext_resource path="res://Pot/mat_bubbles.tres" type="Material" id=7]
+[ext_resource path="res://Pot/fire_particles.png" type="Texture" id=8]
 
 [sub_resource type="PlaneMesh" id=4]
 material = ExtResource( 4 )
@@ -20,7 +21,7 @@ radial_segments = 6
 rings = 3
 
 [sub_resource type="Curve" id=7]
-_data = [ Vector2( 0, 1 ), 0.0, -0.0904658, 0, 0, Vector2( 1, 0.45 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, -0.0904658, 0, 0, Vector2( 1, 0.161364 ), -0.647451, 0.0, 0, 0 ]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.501768, 0.584637, 0.505738 )
@@ -182,20 +183,28 @@ tracks/0/keys = {
 
 [sub_resource type="SpatialMaterial" id=10]
 flags_transparent = true
-flags_unshaded = true
+flags_vertex_lighting = true
+flags_fixed_size = true
+flags_do_not_receive_shadows = true
 vertex_color_use_as_albedo = true
 params_billboard_mode = 3
-particles_anim_h_frames = 1
+particles_anim_h_frames = 3
 particles_anim_v_frames = 1
-particles_anim_loop = false
+particles_anim_loop = true
+albedo_texture = ExtResource( 8 )
+emission_enabled = true
+emission = Color( 0.121569, 0.121569, 0.121569, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="QuadMesh" id=11]
 material = SubResource( 10 )
 size = Vector2( 0.1, 0.1 )
 
 [sub_resource type="Gradient" id=12]
-offsets = PoolRealArray( 0, 0.469613, 0.98895 )
-colors = PoolColorArray( 0.890196, 0.164706, 0.164706, 1, 0.772549, 0.541176, 0.298039, 0.643137, 1, 0.944, 0.52, 0.501961 )
+offsets = PoolRealArray( 0.128655, 0.324561, 0.578947, 0.938596 )
+colors = PoolColorArray( 0.44, 0.1144, 0.1144, 1, 0.89, 0.53845, 0.1869, 1, 0.89, 0.72802, 0.1958, 0.705882, 0.97, 0.77988, 0.1552, 0.501961 )
 
 [node name="Pot" groups=["Resetable"] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -258,26 +267,29 @@ anims/buildup = SubResource( 13 )
 anims/hiteffect = SubResource( 9 )
 
 [node name="FireParticles" type="CPUParticles" parent="." index="5"]
-transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.0610029, 0 )
-amount = 40
-lifetime = 0.8
-explosiveness = 0.3
+pause_mode = 2
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.126916, 0 )
+amount = 80
 mesh = SubResource( 11 )
 emission_shape = 2
-emission_box_extents = Vector3( 0.3, 0, 0.5 )
-direction = Vector3( 0, 0, 0 )
-gravity = Vector3( 0, 0.4, 0 )
-angular_velocity = 1.0
-angular_velocity_random = 1.0
-linear_accel = 1.5
-linear_accel_random = 1.0
-radial_accel = 1.0
-radial_accel_random = 0.5
-angle = 45.0
+emission_box_extents = Vector3( 0.4, 0, 0.6 )
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0.5, 0 )
+radial_accel = 1.5
+tangential_accel = 0.5
+tangential_accel_random = 1.0
+damping = 1.5
+damping_random = 0.5
+angle = 360.0
 angle_random = 1.0
+scale_amount = 1.5
 scale_amount_random = 1.0
 scale_amount_curve = SubResource( 7 )
 color_ramp = SubResource( 12 )
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [node name="FireLight" type="OmniLight" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.339319, 0.378833 )
