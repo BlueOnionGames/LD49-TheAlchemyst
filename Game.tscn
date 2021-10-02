@@ -6,6 +6,7 @@
 [ext_resource path="res://Progress/ProgressCircle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Quicksilver/Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Upgrades/Tooltip.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Quicksilver/Regular_72.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=8]
 [ext_resource path="res://coin.png" type="Texture" id=9]
 
@@ -37,15 +38,8 @@ action = "pause"
 [sub_resource type="ShortCut" id=12]
 shortcut = SubResource( 11 )
 
-[sub_resource type="DynamicFont" id=13]
-size = 72
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-extra_spacing_char = 10
-font_data = ExtResource( 5 )
-
 [sub_resource type="DynamicFont" id=14]
+size = 18
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -346,7 +340,7 @@ alignment = 1
 margin_top = 304.0
 margin_right = 316.0
 margin_bottom = 391.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = ExtResource( 7 )
 text = "PAUSED"
 align = 1
 
@@ -375,15 +369,15 @@ margin_bottom = 720.0
 mouse_filter = 2
 alignment = 1
 
-[node name="LblPaused" type="Label" parent="CanvasLayer/GameOverMsg/VBoxContainer"]
+[node name="LblGameOver" type="Label" parent="CanvasLayer/GameOverMsg/VBoxContainer"]
 margin_top = 264.0
 margin_right = 492.0
 margin_bottom = 351.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = ExtResource( 7 )
 text = "GAME OVER"
 align = 1
 
-[node name="LblPaused2" type="Label" parent="CanvasLayer/GameOverMsg/VBoxContainer"]
+[node name="LblGameOver2" type="Label" parent="CanvasLayer/GameOverMsg/VBoxContainer"]
 margin_top = 355.0
 margin_right = 492.0
 margin_bottom = 375.0
@@ -425,7 +419,7 @@ margin_bottom = 713.0
 custom_colors/font_color = Color( 1, 1, 1, 0.501961 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.501961 )
 custom_fonts/font = SubResource( 14 )
-text = "MADE BY ZEDUTCH_ IN 48 HOURS FOR LUDUM DARE 49"
+text = "The Alchemyst - Made by Zedutch_  in 48 hours for Ludum Dare 49"
 __meta__ = {
 "_edit_use_anchors_": false
 }
