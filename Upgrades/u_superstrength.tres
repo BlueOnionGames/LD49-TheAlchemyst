@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Super strength"
+description = "You can stir superfast! Shame it doesn't help you brew any faster though..."
+identifier = ""
+cost = 50
+purchased = false
+order = 0
+single_purchase = true
+custom_effect = false
+stat = "stir_speed"
+stat_multiplier = 4.0
+stat_addition = 0.0
