@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://HeatGauge/HeatGauge.gd"
 }, {
+"base": "Control",
+"class": "LabelSpawner",
+"language": "GDScript",
+"path": "res://Progress/LabelSpawner.gd"
+}, {
 "base": "StaticBody",
 "class": "Pot",
 "language": "GDScript",
@@ -46,6 +51,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "HeatGauge": "",
+"LabelSpawner": "",
 "Pot": "",
 "ProgressCircle": "",
 "StatsClass": "",

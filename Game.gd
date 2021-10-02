@@ -10,6 +10,7 @@ onready var upgrade_container := find_node("UpgradeContainer") as GridContainer
 onready var tooltip := find_node("Tooltip") as Tooltip
 onready var lbl_coins := find_node("LblCoins") as Label
 onready var msg_pause := find_node("PauseMsg") as Container
+onready var label_spawner := find_node("LabelSpawner") as LabelSpawner
 
 export(String, FILE) var upgrade_dir := "res://Upgrades"
 
@@ -140,6 +141,7 @@ func update_coins_label(coins: int) -> void:
 func brew_potion() -> void:
 	self.gauge.new_flame()
 	self.time_in_range = 0.0
+	self.label_spawner.spawn_label("+%d" % Stats.potions_per_batch)
 	Stats.coins += Stats.potions_per_batch * Stats.coins_per_potion
 	Stats.potions_brewed += Stats.potions_per_batch
 
