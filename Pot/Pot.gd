@@ -43,6 +43,8 @@ func reset() -> void:
 	self.emit_bubbles = false
 	self.emit_fire = true
 	self.liquid_light = false
+	self.anim_pot.play("RESET")
+	self.anim_spoon.play("RESET")
 
 
 func set_hovered(hovered: bool) -> void:
