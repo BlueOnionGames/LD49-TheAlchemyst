@@ -15,6 +15,7 @@ signal upgrade_bought
 
 func _ready() -> void:
 	Stats.connect("coins_changed", self, "check_purchasable")
+	self.visible = false
 	self.bought_check.visible = false
 
 func set_upgrade(upgr: Resource) -> void:
@@ -48,6 +49,9 @@ func enable() -> void:
 func check_purchasable(coins: int) -> void:
 	if self.upgrade == null: return
 	elif self.upgrade.purchased: return
+
+	if coins + 3 >= self.upgrade.cost / 2.0: # +3 so the first upgrade is always visible
+		self.visible = true
 
 	if coins >= self.upgrade.cost:
 		self.enable()
