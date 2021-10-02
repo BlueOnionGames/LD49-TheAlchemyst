@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 
 
 func new_flame() -> void:
-	self.set_flame(rand_range(self.danger_zone * 1.5, 1.0))
+	self.set_flame(rand_range(self.danger_zone + stir_strength, 1.0))
 
 
 func set_flame(flame: float) -> void:
