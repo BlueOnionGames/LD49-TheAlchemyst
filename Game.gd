@@ -30,10 +30,12 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	Stats.load_stats()
 	# Start paused
-	self._on_btnPause_toggled(true)
+	self.pause()
 
 
 func _process(delta):
+	if get_tree().paused: return
+
 	if self.in_range:
 		time_in_range += delta * Stats.time_speedup
 		if time_in_range >= Stats.time_till_bubbles:
@@ -62,6 +64,12 @@ func _process(delta):
 			pot.set_buildup_strength(0)
 		else:
 			pot.set_buildup_strength(lerp(pot.buildup_strength, 0, delta))
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		self.pause(not get_tree().paused)
+		get_tree().set_input_as_handled()
 
 
 func load_upgrades() -> void:
@@ -125,11 +133,6 @@ func _on_HeatGauge_stir_out_of_danger():
 	time_in_danger = 0
 
 
-func _on_btnPause_toggled(button_pressed):
-	get_tree().paused = button_pressed
-	msg_pause.visible = button_pressed
-
-
 func update_coins_label(coins: int) -> void:
 	if lbl_coins:
 		lbl_coins.text = "%d" % coins
@@ -162,6 +165,7 @@ func _on_btnSave_pressed():
 
 
 func reset():
+	self.pause(true, true)
 	self.upgrades = []
 	self.load_upgrades()
 	self.anim_player.play("RESET")
@@ -176,11 +180,14 @@ func _on_BtnReload_pressed():
 	self.reset()
 	yield(get_tree(), "idle_frame")
 	Stats.load_stats()
+	self.pause(true, true)
 
 
 func _on_SaveTimer_timeout():
 	Stats.save_stats()
 
 
-func pause(pause: bool = true):
+func pause(pause: bool = true, show_message := true):
 	get_tree().set_pause(pause)
+	if show_message || not pause:
+		msg_pause.visible = pause

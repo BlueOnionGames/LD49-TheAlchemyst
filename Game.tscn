@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Pot/Pot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HeatGauge/HeatGauge.tscn" type="PackedScene" id=2]
@@ -52,12 +52,6 @@ _data = [ Vector2( 0, 1 ), 0.0, -2.06091e-07, 0, 0, Vector2( 1, 0 ), -0.751996, 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.265193, 0.558011, 0.740331 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.997167, 1, 0.83, 1, 0.853837, 0.86, 0.4902, 1, 0.229502, 0.23, 0.2001, 1 )
-
-[sub_resource type="InputEventAction" id=11]
-action = "pause"
-
-[sub_resource type="ShortCut" id=12]
-shortcut = SubResource( 11 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 18
@@ -128,18 +122,6 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/btnPause:pressed")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -215,36 +197,43 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
+"args": [ true, false ],
 "method": "pause"
 } ]
 }
 
 [node name="Game" type="Spatial"]
+pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Pot" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
 liquid_color = Color( 0.74902, 0.301961, 0.301961, 0.501961 )
 
 [node name="Camera" type="Camera" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 0.914868, 0.403753, 0, -0.403753, 0.914868, 0, 2.29919, 3.69436 )
 fov = 50.0
 
 [node name="Floor" type="MeshInstance" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.514972 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="OmniLight" type="OmniLight" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75652, 2.03965, 1.35963 )
 light_color = Color( 0.541176, 0.482353, 0.372549, 1 )
 shadow_enabled = true
 shadow_bias = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+pause_mode = 1
 environment = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 0.269, 1.483 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -278,26 +267,14 @@ scale_amount_curve = SubResource( 7 )
 color_ramp = SubResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 1
 
 [node name="HeatGauge" parent="CanvasLayer" instance=ExtResource( 2 )]
+pause_mode = 1
 position = Vector2( 489, 476 )
 
 [node name="ProgressCircle" parent="CanvasLayer" instance=ExtResource( 4 )]
-
-[node name="btnPause" type="Button" parent="CanvasLayer"]
-pause_mode = 2
-margin_left = 29.0
-margin_top = 37.0
-margin_right = 79.0
-margin_bottom = 57.0
-mouse_default_cursor_shape = 2
-toggle_mode = true
-pressed = true
-shortcut = SubResource( 12 )
-text = "Pause"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+pause_mode = 1
 
 [node name="btnSave" type="Button" parent="CanvasLayer"]
 pause_mode = 2
@@ -364,7 +341,6 @@ columns = 4
 
 [node name="PauseMsg" type="HBoxContainer" parent="CanvasLayer"]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -381,20 +357,30 @@ mouse_filter = 2
 alignment = 1
 
 [node name="LblPaused" type="Label" parent="CanvasLayer/PauseMsg/VBoxContainer"]
-margin_top = 304.0
+margin_top = 289.0
 margin_right = 316.0
-margin_bottom = 391.0
+margin_bottom = 376.0
 custom_fonts/font = ExtResource( 7 )
 text = "PAUSED"
 align = 1
 
 [node name="LblPaused2" type="Label" parent="CanvasLayer/PauseMsg/VBoxContainer"]
-margin_top = 395.0
+margin_top = 380.0
 margin_right = 316.0
-margin_bottom = 415.0
+margin_bottom = 400.0
 custom_fonts/font = ExtResource( 8 )
 text = "Press 'space' to resume"
 align = 1
+
+[node name="BtnResume" type="Button" parent="CanvasLayer/PauseMsg/VBoxContainer"]
+margin_top = 404.0
+margin_right = 316.0
+margin_bottom = 430.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "or click here"
+flat = true
 
 [node name="GameOverMsg" type="HBoxContainer" parent="CanvasLayer"]
 pause_mode = 2
@@ -487,6 +473,7 @@ anims/RESET = SubResource( 9 )
 anims/gameover = SubResource( 10 )
 
 [node name="SaveTimer" type="Timer" parent="."]
+pause_mode = 1
 wait_time = 5.0
 autostart = true
 
@@ -495,8 +482,8 @@ autostart = true
 [connection signal="stir_in_range" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_in_range"]
 [connection signal="stir_out_of_danger" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_out_of_danger"]
 [connection signal="stir_out_of_range" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_out_of_range"]
-[connection signal="toggled" from="CanvasLayer/btnPause" to="." method="_on_btnPause_toggled"]
 [connection signal="pressed" from="CanvasLayer/btnSave" to="." method="_on_btnSave_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMsg/VBoxContainer/BtnResume" to="." method="pause" binds= [ false, true ]]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="." method="_on_BtnReload_pressed"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_SaveTimer_timeout"]
