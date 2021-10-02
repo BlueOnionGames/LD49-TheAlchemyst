@@ -41,7 +41,7 @@ func _process(delta):
 		gauge.range_color = Color.white
 
 	if self.in_danger:
-		pot.set_buildup_strength(time_in_danger * buildup_speed)
+		pot.set_buildup_strength(pot.buildup_strength + delta * buildup_speed)
 		if pot.buildup_strength > buildup_explosion:
 			self.anim_player.play("gameover")
 	elif pot.buildup_strength > 0.0:
