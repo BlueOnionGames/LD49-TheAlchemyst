@@ -12,12 +12,9 @@ var shape_range: CollisionShape2D
 var shape_danger: CollisionShape2D
 
 var bar_height := 0
-var stir_strength := 0.2
 
 export(float, 0.0, 1.0) var flame_strength := 0.7 setget set_flame
 export(float, 0.0, 1.0) var stir_level := 1.0 setget set_stir_level
-export(float, 0.0, 1.0) var danger_zone := 0.1 setget set_danger_height
-export(float, 0.0, 1.0) var range_size := 0.25 setget set_range_size
 
 export(Color) var bar_color := Color.white setget set_bar
 export(Color) var range_color := Color.white setget set_range
@@ -35,6 +32,8 @@ signal stir_out_of_danger
 func _ready() -> void:
 	self.bar_height = spr_bar.texture.get_height()
 	self.reset()
+	Stats.connect("stir_range_changed", self, "set_stir_range")
+	Stats.connect("danger_range_changed", self, "set_danger_range")
 
 
 func _process(delta: float) -> void:
@@ -63,8 +62,9 @@ func reset() -> void:
 	spr_range = ar_range.find_node("Sprite")
 	shape_range = ar_range.find_node("CollisionShape2D")
 	shape_danger = ar_danger.find_node("CollisionShape2D")
-	self.set_range_size(self.range_size)
-	self.set_danger_height(self.danger_zone)
+
+	self.bar_color = Color.white
+	self.range_color = Color.white
 
 	self.new_flame()
 
@@ -73,7 +73,7 @@ func reset() -> void:
 
 
 func new_flame() -> void:
-	self.set_flame(rand_range(self.danger_zone + stir_strength, 1.0))
+	self.set_flame(rand_range(Stats.danger_range + Stats.stir_strength, 1.0))
 
 
 func set_flame(flame: float) -> void:
@@ -86,23 +86,21 @@ func set_stir_level(level: float) -> void:
 	ar_range.position.y = -bar_height * stir_level
 
 
-func set_danger_height(height: float) -> void:
-	danger_zone = height
+func set_danger_range(danger_range: float) -> void:
 	var shape := shape_danger.shape as RectangleShape2D
-	shape.extents.y = bar_height * danger_zone / 2.0
+	shape.extents.y = bar_height * danger_range / 2.0
 	shape_danger.position.y = -shape.extents.y
 	rect_danger.margin_top = -shape.extents.y * 2.0
 
 
-func set_range_size(height: float) -> void:
-	range_size = height
+func set_stir_range(stir_range: float) -> void:
 	var shape := shape_range.shape as RectangleShape2D
-	shape.extents.y = bar_height * height / 2.0
-	spr_range.scale.y = height / (spr_range.texture.get_height() / (bar_height*1.0))
+	shape.extents.y = bar_height * stir_range / 2.0
+	spr_range.scale.y = stir_range / (spr_range.texture.get_height() / (bar_height*1.0))
 
 
 func stir() -> void:
-	self.stir_level += stir_strength
+	self.stir_level += Stats.stir_strength
 
 
 func in_range() -> bool:
