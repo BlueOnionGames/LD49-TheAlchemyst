@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
@@ -7,6 +7,12 @@
 script = ExtResource( 2 )
 name = "stir_decay"
 multiplier = 0.8
+addition = 0.0
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+name = "stability"
+multiplier = 1.01
 addition = 0.0
 
 [resource]
@@ -19,4 +25,4 @@ purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-effects = [ SubResource( 1 ) ]
+effects = [ SubResource( 1 ), SubResource( 2 ) ]

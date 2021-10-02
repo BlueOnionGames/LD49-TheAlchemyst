@@ -28,6 +28,7 @@ var time_till_bubbles := 2.0
 var explosion_trigger := 2.0
 var flame_randomness := 1.0
 var buildup_speed := 0.5
+var stability := 1.0
 var autobrew_interval := 1.0 setget set_autobrew_interval
 var autobrew_enabled := true setget set_autobrew_enabled
 
@@ -98,6 +99,7 @@ func get_attributes() -> Dictionary:
 		"explosion_trigger": self.explosion_trigger,
 		"flame_randomness": self.flame_randomness,
 		"buildup_speed": self.buildup_speed,
+		"stability": self.stability,
 		"autobrew_interval": self.autobrew_interval,
 		"autobrew_enabled": self.autobrew_enabled,
 	}
