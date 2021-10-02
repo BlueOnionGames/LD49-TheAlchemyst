@@ -14,7 +14,7 @@ script = ExtResource( 1 )
 name = "Potion Quality II"
 description = "Better potions = more money per potion. Easy!"
 identifier = ""
-cost = 30
+cost = 24
 purchased = false
 order = 0
 single_purchase = true
