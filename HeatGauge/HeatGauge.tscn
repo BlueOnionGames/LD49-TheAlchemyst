@@ -29,6 +29,16 @@ offset = Vector2( -9.5, -230 )
 position = Vector2( 0, -5 )
 shape = SubResource( 3 )
 
+[node name="DangerRect" type="ColorRect" parent="Bar/Danger"]
+margin_left = -8.0
+margin_top = -13.0
+margin_right = 8.0
+margin_bottom = -1.0
+color = Color( 0.48, 0.048, 0.048, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite" type="Sprite" parent="Bar/Danger"]
 position = Vector2( 0, -8 )
 texture = ExtResource( 5 )

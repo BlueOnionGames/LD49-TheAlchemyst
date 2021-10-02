@@ -5,6 +5,7 @@ onready var spr_bar  := find_node("Bar") as Sprite
 onready var ar_flame := find_node("Flame") as Area2D
 onready var ar_range := find_node("Range") as Area2D
 onready var ar_danger := find_node("Danger") as Area2D
+onready var rect_danger := find_node("DangerRect") as ColorRect
 
 var spr_range: Sprite
 var shape_range: CollisionShape2D
@@ -86,6 +87,7 @@ func set_danger_height(height: float) -> void:
 	var shape := shape_danger.shape as RectangleShape2D
 	shape.extents.y = bar_height * danger_zone / 2.0
 	shape_danger.position.y = -shape.extents.y
+	rect_danger.margin_top = -shape.extents.y * 2.0
 
 
 func set_range_size(height: float) -> void:
