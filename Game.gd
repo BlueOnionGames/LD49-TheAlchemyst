@@ -95,10 +95,10 @@ func load_upgrades() -> void:
 	for upgrade in self.upgrades:
 		var button := preload("res://Upgrades/UpgradeButton.tscn").instance(PackedScene.GEN_EDIT_STATE_INSTANCE) as UpgradeButton
 		button.upgrade = upgrade
+		upgrade.purchased = false
 		button.connect("upgrade_bought", self, "apply_upgrade")
 		button.connect("upgrade_hover", self.tooltip, "show_tooltip")
 		button.connect("upgrade_hover_exited", self.tooltip, "hide_tooltip")
-#		button.owner = self
 		self.upgrade_container.add_child(button)
 
 
