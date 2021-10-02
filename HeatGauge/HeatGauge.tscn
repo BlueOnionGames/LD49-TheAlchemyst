@@ -40,7 +40,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Bar/Danger"]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -10 )
 texture = ExtResource( 5 )
 
 [node name="Range" type="Area2D" parent="Bar"]
@@ -60,4 +60,5 @@ position = Vector2( 0, 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Bar/Flame"]
+scale = Vector2( 0.8, 0.9 )
 texture = ExtResource( 3 )
