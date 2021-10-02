@@ -45,17 +45,15 @@ func enable() -> void:
 	self.button_container.modulate.a = 1.0
 
 
-func check_purchasable(coins: int) -> bool:
-	if self.upgrade == null: return false
-	if self.upgrade.purchased:
-		return false
-	var purchasable := coins >= self.upgrade.cost
-	if purchasable:
+func check_purchasable(coins: int) -> void:
+	if self.upgrade == null: return
+	elif self.upgrade.purchased: return
+
+	if coins >= self.upgrade.cost:
 		self.enable()
 	else:
 		self.disable()
 		self.button_container.modulate.a = 0.6
-	return purchasable
 
 
 func _on_Button_pressed() -> void:
