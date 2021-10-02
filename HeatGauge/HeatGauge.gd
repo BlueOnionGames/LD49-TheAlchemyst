@@ -12,9 +12,10 @@ var shape_range: CollisionShape2D
 var shape_danger: CollisionShape2D
 
 var bar_height := 0
+var stir_strength := 0.2
 
 export(float, 0.0, 1.0) var flame_strength := 0.7 setget set_flame
-export(float, 0.0, 1.0) var stir_strength := 0.5 setget set_stir
+export(float, 0.0, 1.0) var stir_level := 1.0 setget set_stir_level
 export(float, 0.0, 1.0) var danger_zone := 0.1 setget set_danger_height
 export(float, 0.0, 1.0) var range_size := 0.25 setget set_range_size
 
@@ -36,7 +37,7 @@ signal stir_out_of_danger
 func _ready() -> void:
 	self.bar_height = spr_bar.texture.get_height()
 	self.new_flame()
-	self.set_stir(self.stir_strength)
+	self.set_stir_level(self.stir_level)
 
 	spr_range = ar_range.find_node("Sprite")
 	shape_range = ar_range.find_node("CollisionShape2D")
@@ -49,7 +50,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	self.stir_strength -= stir_decay * delta
+	self.stir_level -= stir_decay * delta
 
 	var in_range := self.in_range()
 	if in_range != self.was_in_range:
@@ -77,9 +78,9 @@ func set_flame(flame: float) -> void:
 	ar_flame.position.y = -bar_height * flame_strength
 
 
-func set_stir(stir: float) -> void:
-	stir_strength = clamp(stir, 0.0, 1.0)
-	ar_range.position.y = -bar_height * stir_strength
+func set_stir_level(level: float) -> void:
+	stir_level = clamp(level, 0.0, 1.0)
+	ar_range.position.y = -bar_height * stir_level
 
 
 func set_danger_height(height: float) -> void:
@@ -98,7 +99,7 @@ func set_range_size(height: float) -> void:
 
 
 func stir() -> void:
-	self.stir_strength += 0.2
+	self.stir_level += stir_strength
 
 
 func in_range() -> bool:
