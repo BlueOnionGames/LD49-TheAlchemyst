@@ -21,11 +21,6 @@ var time_in_danger := 0.0
 var in_range := false
 var in_danger := false
 
-var potion_duration := 4.0
-var time_bubbles := 2.0
-var buildup_speed := 0.5
-var buildup_explosion := 2.0
-
 
 func _ready():
 	pot.emit_fire = true
@@ -41,11 +36,11 @@ func _ready():
 func _process(delta):
 	if self.in_range:
 		time_in_range += delta * Stats.time_speedup
-		if time_in_range >= time_bubbles:
+		if time_in_range >= Stats.time_till_bubbles:
 			pot.emit_bubbles = true
 
-	progress_circle.progress = time_in_range / potion_duration
-	if time_in_range >= potion_duration:
+	progress_circle.progress = time_in_range / Stats.time_till_potion
+	if time_in_range >= Stats.time_till_potion:
 		self.brew_potion()
 
 	if self.in_danger:
@@ -59,8 +54,8 @@ func _process(delta):
 		gauge.range_color = Color.white
 
 	if self.in_danger:
-		pot.set_buildup_strength(pot.buildup_strength + delta * buildup_speed)
-		if pot.buildup_strength > buildup_explosion:
+		pot.set_buildup_strength(pot.buildup_strength + delta * Stats.buildup_speed)
+		if pot.buildup_strength > Stats.explosion_trigger:
 			self.anim_player.play("gameover")
 	elif pot.buildup_strength > 0.0:
 		if pot.buildup_strength < 0.1:
@@ -143,7 +138,7 @@ func update_coins_label(coins: int) -> void:
 func brew_potion() -> void:
 	self.gauge.new_flame()
 	self.time_in_range = 0.0
-	self.label_spawner.spawn_label("+%d" % Stats.potions_per_batch)
+	self.label_spawner.spawn_label("+%d x %d" % [Stats.potions_per_batch, Stats.coins_per_potion])
 	Stats.coins += Stats.potions_per_batch * Stats.coins_per_potion
 	Stats.potions_brewed += Stats.potions_per_batch
 

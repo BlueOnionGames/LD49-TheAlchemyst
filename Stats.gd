@@ -20,6 +20,10 @@ var potions_brewed := 0
 var potions_per_batch := 1
 var coins_per_potion := 1
 var time_speedup := 1.0
+var time_till_potion := 4.0
+var time_till_bubbles := 2.0
+var explosion_trigger := 2.0
+var buildup_speed := 0.5
 
 var _initial_attributes: Dictionary
 
@@ -70,6 +74,10 @@ func get_attributes() -> Dictionary:
 		"potions_per_batch": self.potions_per_batch,
 		"coins_per_potion": self.coins_per_potion,
 		"time_speedup": self.time_speedup,
+		"time_till_potion": self.time_till_potion,
+		"time_till_bubbles": self.time_till_bubbles,
+		"explosion_trigger": self.explosion_trigger,
+		"buildup_speed": self.buildup_speed,
 	}
 
 
