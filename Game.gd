@@ -45,7 +45,10 @@ func _process(delta):
 		if pot.buildup_strength > buildup_explosion:
 			self.anim_player.play("gameover")
 	elif pot.buildup_strength > 0.0:
-		pot.set_buildup_strength(lerp(pot.buildup_strength, 0, delta))
+		if pot.buildup_strength < 0.1:
+			pot.set_buildup_strength(0)
+		else:
+			pot.set_buildup_strength(lerp(pot.buildup_strength, 0, delta))
 
 
 func _on_HeatGauge_stir_in_range():

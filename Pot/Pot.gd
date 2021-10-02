@@ -50,11 +50,16 @@ func _unhandled_input(event) -> void:
 
 func set_buildup_strength(strength: float) -> void:
 	buildup_strength = strength
-	anim_pot.play("buildup", -1, buildup_strength)
-	var pot_color = self._pot_default.linear_interpolate(overheat_color, buildup_strength)
-	msh_pot.get_surface_material(0).albedo_color = pot_color
-	var border_color = self._border_default.linear_interpolate(overheat_color, buildup_strength)
-	msh_border.get_surface_material(0).albedo_color = border_color
+	if buildup_strength > 0.001:
+		anim_pot.play("buildup", -1, buildup_strength)
+		var pot_color = self._pot_default.linear_interpolate(overheat_color, buildup_strength)
+		msh_pot.get_surface_material(0).albedo_color = pot_color
+		var border_color = self._border_default.linear_interpolate(overheat_color, buildup_strength)
+		msh_border.get_surface_material(0).albedo_color = border_color
+	else:
+		buildup_strength = 0.0
+		msh_pot.get_surface_material(0).albedo_color = self._pot_default
+		msh_border.get_surface_material(0).albedo_color = self._border_default
 
 
 func stop_buildup() -> void:
