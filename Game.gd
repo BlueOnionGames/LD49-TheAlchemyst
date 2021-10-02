@@ -156,6 +156,9 @@ func apply_upgrade(upgrade: Upgrade):
 	else:
 		var stat = Stats.get(upgrade.stat)
 		Stats.set(upgrade.stat, stat * upgrade.stat_multiplier + upgrade.stat_addition)
+		if upgrade.stat2 != "":
+			stat = Stats.get(upgrade.stat2)
+			Stats.set(upgrade.stat2, stat * upgrade.stat2_multiplier + upgrade.stat2_addition)
 
 
 func _on_btnSave_pressed():

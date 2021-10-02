@@ -14,3 +14,7 @@ export var custom_effect := false
 export var stat: String
 export var stat_multiplier := 1.0
 export var stat_addition := 0.0
+
+export var stat2: String
+export var stat2_multiplier := 1.0
+export var stat2_addition := 0.0
