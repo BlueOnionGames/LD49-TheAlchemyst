@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Sprite",
 "class": "ProgressCircle",
 "language": "GDScript",
-"path": "res://ProgressBar.gd"
+"path": "res://Progress/ProgressCircle.gd"
 } ]
 _global_script_class_icons={
 "HeatGauge": "",
