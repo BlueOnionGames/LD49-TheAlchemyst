@@ -48,7 +48,11 @@ func _process(delta):
 	if self.stats_label != null:
 		self.stats_label.text = ""
 		for attribute in Stats._initial_attributes:
-			self.stats_label.text = "%s %s: %s\n" % [self.stats_label.text, attribute, Stats.get(attribute)]
+			if attribute in ['autobrew_enabled', 'autobrew_interval', 'buildup_speed', 'time_till_bubbles', 'time_speedup']: continue
+			elif attribute in ['playtime']:
+				self.stats_label.text = "%s %s: %.1f\n" % [self.stats_label.text, attribute, Stats.get(attribute)]
+			else:
+				self.stats_label.text = "%s %s: %s\n" % [self.stats_label.text, attribute.replace('_', ' '), Stats.get(attribute)]
 	if get_tree().paused: return
 
 	if self.in_range:
