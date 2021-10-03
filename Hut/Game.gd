@@ -134,6 +134,8 @@ func load_upgrades() -> void:
 		var button := preload("res://Upgrades/UpgradeButton.tscn").instance()
 		button.upgrade = upgrade
 		upgrade.purchased = already_bought.has(upgrade.name)
+		if upgrade.purchased:
+			self.apply_upgrade(upgrade, false)
 		button.connect("upgrade_bought", self, "apply_upgrade")
 		button.connect("upgrade_hover", self.tooltip, "show_tooltip")
 		button.connect("upgrade_hover_exited", self.tooltip, "hide_tooltip")
@@ -178,7 +180,7 @@ func brew_potion() -> void:
 	Stats.potions_brewed += Stats.potions_per_batch
 
 
-func apply_upgrade(upgrade: Upgrade):
+func apply_upgrade(upgrade: Upgrade, apply_stats := true):
 	if upgrade.custom_effect:
 		match upgrade.identifier:
 			"dbg_spawn_label":
@@ -191,13 +193,15 @@ func apply_upgrade(upgrade: Upgrade):
 				self.brew_timer.wait_time = Stats.autobrew_interval
 			_:
 				print("Unhandled upgrade identifier: %s" % upgrade.identifier)
-	for effect in upgrade.effects:
-		var seff := effect as StatEffect
-		if seff == null:
-			print("Invalid stat effect found in upgrade %s!" % upgrade.name)
-			continue
-		var stat = Stats.get(seff.name)
-		Stats.set(seff.name, stat * seff.multiplier + seff.addition)
+	if apply_stats:
+		self.emit_signal("any_upgrade_bought")
+		for effect in upgrade.effects:
+			var seff := effect as StatEffect
+			if seff == null:
+				print("Invalid stat effect found in upgrade %s!" % upgrade.name)
+				continue
+			var stat = Stats.get(seff.name)
+			Stats.set(seff.name, stat * seff.multiplier + seff.addition)
 
 
 func _on_btnSave_pressed():
