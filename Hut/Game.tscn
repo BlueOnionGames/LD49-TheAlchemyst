@@ -477,30 +477,52 @@ margin_bottom = 720.0
 mouse_filter = 2
 alignment = 1
 
-[node name="LblPaused" type="Label" parent="CanvasLayer/PauseMsg/VBoxContainer"]
-margin_top = 289.0
+[node name="Control2" type="Control" parent="CanvasLayer/PauseMsg/VBoxContainer"]
+margin_top = 142.0
 margin_right = 316.0
-margin_bottom = 376.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 0, 128 )
+
+[node name="LblPaused" type="Label" parent="CanvasLayer/PauseMsg/VBoxContainer"]
+margin_top = 274.0
+margin_right = 316.0
+margin_bottom = 361.0
 custom_fonts/font = ExtResource( 1 )
 text = "PAUSED"
 align = 1
 
 [node name="LblPaused2" type="Label" parent="CanvasLayer/PauseMsg/VBoxContainer"]
-margin_top = 380.0
+margin_top = 365.0
 margin_right = 316.0
-margin_bottom = 400.0
+margin_bottom = 385.0
 custom_fonts/font = ExtResource( 2 )
 text = "Press 'space' to resume"
 align = 1
 
 [node name="BtnResume" type="Button" parent="CanvasLayer/PauseMsg/VBoxContainer"]
-margin_top = 404.0
+margin_top = 389.0
 margin_right = 316.0
-margin_bottom = 430.0
+margin_bottom = 415.0
 mouse_default_cursor_shape = 2
 custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "or click here"
+flat = true
+
+[node name="Control" type="Control" parent="CanvasLayer/PauseMsg/VBoxContainer"]
+margin_top = 419.0
+margin_right = 316.0
+margin_bottom = 547.0
+rect_min_size = Vector2( 0, 128 )
+
+[node name="BtnMainMenu" type="Button" parent="CanvasLayer/PauseMsg/VBoxContainer"]
+margin_top = 551.0
+margin_right = 316.0
+margin_bottom = 577.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Back to main menu"
 flat = true
 
 [node name="GameOverMsg" type="HBoxContainer" parent="CanvasLayer"]
@@ -616,6 +638,7 @@ pause_mode = 1
 [connection signal="pressed" from="CanvasLayer/LeftContainer/AutoBrewContainer/HBoxContainer/BtnAutoBrewIntervalMinus" to="." method="_on_BtnAutoBrewIntervalMinus_pressed"]
 [connection signal="pressed" from="CanvasLayer/LeftContainer/AutoBrewContainer/HBoxContainer/BtnAutoBrewIntervalPlus" to="." method="_on_BtnAutoBrewIntervalPlus_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMsg/VBoxContainer/BtnResume" to="." method="pause" binds= [ false, true ]]
+[connection signal="pressed" from="CanvasLayer/PauseMsg/VBoxContainer/BtnMainMenu" to="." method="return_to_menu"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="." method="_on_BtnReload_pressed"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_SaveTimer_timeout"]

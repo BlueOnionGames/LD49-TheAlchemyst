@@ -93,10 +93,7 @@ func _unhandled_input(event):
 		self.pause(not get_tree().paused)
 		get_tree().set_input_as_handled()
 	elif event.is_action_pressed("back"):
-		Stats.save_stats()
-		if get_tree().paused:
-			get_tree().set_pause(false)
-		get_tree().change_scene("res://Menu/MainMenu.tscn")
+		self.return_to_menu()
 		get_tree().set_input_as_handled()
 
 
@@ -128,7 +125,7 @@ func load_upgrades() -> void:
 		self.upgrade_container.remove_child(child)
 	var already_bought = Stats.bought_upgrades
 	for upgrade in self.upgrades:
-		var button := preload("res://Upgrades/UpgradeButton.tscn").instance(PackedScene.GEN_EDIT_STATE_INSTANCE)
+		var button := preload("res://Upgrades/UpgradeButton.tscn").instance()
 		button.upgrade = upgrade
 		upgrade.purchased = already_bought.has(upgrade.name)
 		button.connect("upgrade_bought", self, "apply_upgrade")
@@ -258,3 +255,10 @@ func _on_BtnAutoBrewIntervalMinus_pressed():
 
 func _on_BtnAutoBrewIntervalPlus_pressed():
 	Stats.autobrew_interval = min(10, Stats.autobrew_interval + 0.1)
+
+
+func return_to_menu():
+	Stats.save_stats()
+	if get_tree().paused:
+		get_tree().set_pause(false)
+	get_tree().change_scene("res://Menu/MainMenu.tscn")
