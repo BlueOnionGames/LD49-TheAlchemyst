@@ -141,7 +141,6 @@ func set_liquid_light(light: bool) -> void:
 
 func set_random_bubble_sound():
 	if liquid_audio1 != null && liquid_audio2:
-		print("BUBBLE")
 		var was_playing := liquid_audio1.playing
 		var size := bubble_sounds.size()
 		_bubble_audio_index = (_bubble_audio_index + 1) % 2
