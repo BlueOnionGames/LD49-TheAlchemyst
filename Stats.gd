@@ -112,6 +112,11 @@ func get_attributes() -> Dictionary:
 	}
 
 
+func has_save_file() -> bool:
+	var file = File.new()
+	return file.file_exists(self.save_file)
+
+
 func save_stats() -> void:
 	print("Saving stats...")
 	self.emit_signal("save_start")
