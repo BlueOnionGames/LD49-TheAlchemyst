@@ -74,7 +74,14 @@ func reset() -> void:
 
 func new_flame() -> void:
 	var prev_flame := self.flame_strength
-	var randomness := rand_range(-1.0, 1.0) * Stats.flame_randomness
+	var min_rand = -1.0
+	var max_rand = 1.0
+	# Prevent the flame from getting stuck near the edges
+	if prev_flame > 0.9:
+		max_rand = 0.1
+	elif prev_flame < Stats.danger_range * 3.0:
+		min_rand = 0.1
+	var randomness := rand_range(min_rand, max_rand) * Stats.flame_randomness
 	var new_flame := prev_flame + randomness
 	self.set_flame(max(new_flame, Stats.danger_range + Stats.stir_strength))
 
