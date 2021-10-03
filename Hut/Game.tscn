@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Quicksilver/Regular_72.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Hut/Hut.glb" type="PackedScene" id=13]
 [ext_resource path="res://select.mp3" type="AudioStream" id=14]
 [ext_resource path="res://gold.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Pot/potion_done.mp3" type="AudioStream" id=16]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -664,7 +665,12 @@ bus = "UI"
 stream = ExtResource( 15 )
 bus = "SFX"
 
+[node name="BrewingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+bus = "SFX"
+
 [connection signal="any_upgrade_bought" from="." to="UpgradeAudio" method="play"]
+[connection signal="potion_brewed" from="." to="BrewingAudio" method="play"]
 [connection signal="stirred" from="Pot" to="CanvasLayer/HeatGauge" method="stir"]
 [connection signal="stir_in_danger" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_in_danger"]
 [connection signal="stir_in_range" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_in_range"]

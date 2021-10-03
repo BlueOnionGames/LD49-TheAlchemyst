@@ -32,6 +32,7 @@ export(Color) var color_danger := Color.red
 export(Color) var color_range := Color.green
 
 signal any_upgrade_bought
+signal potion_brewed
 
 
 func _ready():
@@ -178,6 +179,7 @@ func brew_potion() -> void:
 	self.label_spawner.spawn_label("+%d x %d" % [Stats.potions_per_batch, Stats.coins_per_potion])
 	Stats.coins += Stats.potions_per_batch * Stats.coins_per_potion
 	Stats.potions_brewed += Stats.potions_per_batch
+	emit_signal("potion_brewed")
 
 
 func apply_upgrade(upgrade: Upgrade, apply_stats := true):
