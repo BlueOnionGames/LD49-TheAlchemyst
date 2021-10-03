@@ -33,8 +33,7 @@ func _ready():
 	self.brew_container.visible = false
 	self.load_upgrades()
 	Stats.connect("coins_changed", self, "update_coins_label")
-	yield(get_tree(), "idle_frame")
-	Stats.load_stats()
+	Stats.reset(true)
 	# Start paused
 	self.pause()
 
