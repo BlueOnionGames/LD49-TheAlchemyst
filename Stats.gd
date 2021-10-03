@@ -49,6 +49,7 @@ func reset(skip_attributes := false) -> void:
 	if not skip_attributes:
 		for key in self._initial_attributes:
 			self.set(key, self._initial_attributes[key])
+		self.bought_upgrades = []
 
 	# Trigger the signals
 	yield(get_tree(), "idle_frame")
