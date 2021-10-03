@@ -274,14 +274,15 @@ position = Vector2( 489, 476 )
 
 [node name="ProgressCircle" parent="CanvasLayer" instance=ExtResource( 3 )]
 pause_mode = 1
+position = Vector2( 633, 251 )
 foreground_color = Color( 0.141176, 0.360784, 0.25098, 1 )
 
 [node name="btnSave" type="Button" parent="CanvasLayer"]
 pause_mode = 2
-margin_left = 29.0
-margin_top = 62.0
-margin_right = 79.0
-margin_bottom = 82.0
+margin_left = 22.0
+margin_top = 14.0
+margin_right = 72.0
+margin_bottom = 34.0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Save"
@@ -291,10 +292,10 @@ __meta__ = {
 
 [node name="btnReset" type="Button" parent="CanvasLayer"]
 pause_mode = 2
-margin_left = 29.0
-margin_top = 89.0
-margin_right = 79.0
-margin_bottom = 109.0
+margin_left = 22.0
+margin_top = 41.0
+margin_right = 72.0
+margin_bottom = 61.0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 text = "Reset"
@@ -305,7 +306,7 @@ __meta__ = {
 [node name="LeftContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchor_bottom = 1.0
 margin_left = 10.0
-margin_top = 157.0
+margin_top = 86.0
 margin_right = 180.0
 margin_bottom = -50.0
 custom_constants/separation = 8
@@ -421,7 +422,7 @@ margin_bottom = 60.0
 [node name="UpgradeContainer" type="GridContainer" parent="CanvasLayer/LeftContainer"]
 margin_top = 68.0
 margin_right = 170.0
-margin_bottom = 513.0
+margin_bottom = 584.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
@@ -429,7 +430,7 @@ columns = 4
 [node name="RightContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchor_bottom = 1.0
 margin_left = 1061.0
-margin_top = 157.0
+margin_top = 122.0
 margin_right = 1263.0
 margin_bottom = -50.0
 custom_constants/separation = 8
