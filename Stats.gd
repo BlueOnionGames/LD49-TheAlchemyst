@@ -35,6 +35,8 @@ var autobrew_enabled := true setget set_autobrew_enabled
 var manual_stirs := 0
 var playtime := 0.0
 
+var bought_upgrades := []
+
 var _initial_attributes: Dictionary
 
 func _ready():
@@ -53,6 +55,11 @@ func reset(skip_attributes := false) -> void:
 	self.emit_signal("coins_changed", self.coins)
 	self.emit_signal("stir_range_changed", self.stir_range)
 	self.emit_signal("danger_range_changed", self.danger_range)
+
+
+func set_upgrade_bought(upgrade: Upgrade) -> void:
+	if not bought_upgrades.has(upgrade.name):
+		bought_upgrades.append(upgrade.name)
 
 
 func set_coins(cns: int) -> void:
@@ -123,6 +130,7 @@ func save_stats() -> void:
 	var file = File.new()
 	file.open(self.save_file, File.WRITE)
 	file.store_line(to_json(self.get_attributes()))
+	file.store_line(to_json(self.bought_upgrades))
 	file.close()
 	self.emit_signal("save_done")
 
@@ -139,6 +147,7 @@ func load_stats() -> void:
 	var data := parse_json(file.get_line()) as Dictionary
 	for key in data:
 		self.set(key, data[key])
+	self.bought_upgrades = parse_json(file.get_line())
 	file.close()
 	get_tree().paused = false
 	self.emit_signal("load_done")

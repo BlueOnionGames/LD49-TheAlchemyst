@@ -15,8 +15,12 @@ signal upgrade_bought
 
 func _ready() -> void:
 	Stats.connect("coins_changed", self, "check_purchasable")
-	self.visible = false
-	self.bought_check.visible = false
+	self.connect("upgrade_bought", Stats, "set_upgrade_bought")
+	self.visible = self.upgrade != null && self.upgrade.purchased
+	self.bought_check.visible = self.upgrade != null && self.upgrade.purchased
+	if self.bought_check.visible:
+		self.disable()
+
 
 func set_upgrade(upgr: Resource) -> void:
 	if upgr is Upgrade:

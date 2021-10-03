@@ -126,10 +126,11 @@ func load_upgrades() -> void:
 	self.upgrades.sort_custom(self, "sort_upgrades")
 	for child in self.upgrade_container.get_children():
 		self.upgrade_container.remove_child(child)
+	var already_bought = Stats.bought_upgrades
 	for upgrade in self.upgrades:
 		var button := preload("res://Upgrades/UpgradeButton.tscn").instance(PackedScene.GEN_EDIT_STATE_INSTANCE)
 		button.upgrade = upgrade
-		upgrade.purchased = false
+		upgrade.purchased = already_bought.has(upgrade.name)
 		button.connect("upgrade_bought", self, "apply_upgrade")
 		button.connect("upgrade_hover", self.tooltip, "show_tooltip")
 		button.connect("upgrade_hover_exited", self.tooltip, "hide_tooltip")
