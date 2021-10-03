@@ -36,6 +36,7 @@ func _on_New_Game_pressed():
 
 
 func _on_Continue_pressed():
-	get_tree().change_scene_to(game_scene)
-	yield(get_tree(), "idle_frame")
 	Stats.load_stats()
+	yield(get_tree(), "idle_frame")
+	get_tree().change_scene_to(game_scene)
+
