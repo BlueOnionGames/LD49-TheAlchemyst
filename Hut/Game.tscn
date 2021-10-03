@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Quicksilver/Regular_72.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=2]
@@ -17,6 +17,10 @@
 [ext_resource path="res://gold.mp3" type="AudioStream" id=15]
 [ext_resource path="res://Pot/potion_done.mp3" type="AudioStream" id=16]
 [ext_resource path="res://Pot/fire_particles.png" type="Texture" id=17]
+[ext_resource path="res://check.png" type="Texture" id=18]
+[ext_resource path="res://Upgrades/negative.png" type="Texture" id=19]
+[ext_resource path="res://Tutorial/bar_not_fine.png" type="Texture" id=20]
+[ext_resource path="res://Tutorial/bar_fine.png" type="Texture" id=21]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -56,6 +60,13 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = SubResource( 17 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.109804, 0.109804, 0.109804, 0.545098 )
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="DynamicFont" id=14]
 size = 18
@@ -339,6 +350,42 @@ tracks/21/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/22/type = "value"
+tracks/22/path = NodePath("CanvasLayer/PauseMsg:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("CanvasLayer/TutorialMsg:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("CanvasLayer/PauseButton:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "gameover"
@@ -586,10 +633,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 20 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("CanvasLayer/LabelSpawner:visible")
@@ -652,6 +699,84 @@ tracks/18/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("CanvasLayer/PauseMsg:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("CanvasLayer/GameOverMsg:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "tutorial1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/TutorialMsg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/PauseButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "tutorial2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/TutorialMsg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/PauseButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="SpatialMaterial" id=20]
@@ -932,6 +1057,7 @@ scroll_active = false
 
 [node name="PauseMsg" type="HBoxContainer" parent="CanvasLayer"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1118,6 +1244,115 @@ custom_fonts/font = ExtResource( 2 )
 text = "Back to main menu"
 flat = true
 
+[node name="TutorialMsg" type="HBoxContainer" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/TutorialMsg"]
+margin_left = 326.0
+margin_right = 376.0
+margin_bottom = 720.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TutorialMsg/VBoxContainer2"]
+margin_top = 208.0
+margin_right = 50.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 250 )
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TutorialMsg/VBoxContainer2"]
+margin_top = 462.0
+margin_right = 50.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/TutorialMsg"]
+margin_left = 380.0
+margin_right = 430.0
+margin_bottom = 720.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TutorialMsg/VBoxContainer3"]
+margin_top = 208.0
+margin_right = 50.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 250 )
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TutorialMsg/VBoxContainer3"]
+margin_top = 462.0
+margin_right = 50.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="Control" type="Control" parent="CanvasLayer/TutorialMsg"]
+margin_left = 434.0
+margin_right = 444.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TutorialMsg"]
+margin_left = 448.0
+margin_right = 953.0
+margin_bottom = 720.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer/TutorialMsg/VBoxContainer"]
+margin_top = 148.0
+margin_right = 505.0
+margin_bottom = 276.0
+rect_min_size = Vector2( 0, 128 )
+
+[node name="LblTutorial" type="Label" parent="CanvasLayer/TutorialMsg/VBoxContainer"]
+margin_top = 280.0
+margin_right = 505.0
+margin_bottom = 438.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 25 )
+text = "You are brewing some very experimental potions.
+Keep the heat under control by stirring the pot
+at the correct intervals.
+
+Try to keep the bar behind the flame to the left.
+
+You can pause at any time by pressing the spacebar."
+align = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/TutorialMsg/VBoxContainer"]
+margin_top = 442.0
+margin_right = 505.0
+margin_bottom = 542.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="BtnQuitTutorial" type="Button" parent="CanvasLayer/TutorialMsg/VBoxContainer"]
+margin_top = 546.0
+margin_right = 505.0
+margin_bottom = 572.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Click here to begin"
+flat = true
+
 [node name="Tooltip" parent="CanvasLayer" instance=ExtResource( 6 )]
 visible = false
 
@@ -1167,6 +1402,8 @@ pause_mode = 2
 anims/RESET = SubResource( 9 )
 anims/gameover = SubResource( 10 )
 anims/portal_opening = SubResource( 22 )
+anims/tutorial1 = SubResource( 24 )
+anims/tutorial2 = SubResource( 26 )
 
 [node name="SaveTimer" type="Timer" parent="."]
 pause_mode = 1
@@ -1242,6 +1479,8 @@ anim_offset_random = 1.0
 [connection signal="pressed" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnMainMenu" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnMainMenu" to="." method="return_to_menu"]
+[connection signal="mouse_entered" from="CanvasLayer/TutorialMsg/VBoxContainer/BtnQuitTutorial" to="UIAudio" method="play"]
+[connection signal="pressed" from="CanvasLayer/TutorialMsg/VBoxContainer/BtnQuitTutorial" to="." method="_on_BtnQuitTutorial_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/PauseButton" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="pause"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_SaveTimer_timeout"]

@@ -38,6 +38,8 @@ var playtime := 0.0
 
 var bought_upgrades := []
 
+var is_in_tutorial := false
+
 var _initial_attributes: Dictionary
 
 func _ready():

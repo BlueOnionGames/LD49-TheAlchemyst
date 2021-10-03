@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
+[ext_resource path="res://HeatGauge/danger.svg" type="Texture" id=3]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -27,6 +28,7 @@ name = "Secret Ingredient"
 description = "You discover a secret ingredient that makes customers pay more for your potions for some reason. I'm sure it'll all be fine though!"
 identifier = ""
 cost = 5000
+texture = ExtResource( 3 )
 purchased = false
 order = 0
 single_purchase = true

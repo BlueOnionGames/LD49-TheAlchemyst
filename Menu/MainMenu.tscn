@@ -282,6 +282,7 @@ emit_bubbles = true
 liquid_light = true
 
 [node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
 pause_mode = 1

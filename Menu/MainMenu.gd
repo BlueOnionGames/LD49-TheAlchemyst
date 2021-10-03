@@ -7,6 +7,7 @@ onready var btn_continue := find_node("Continue") as Button
 
 func _ready() -> void:
 	btn_continue.disabled = not Stats.has_save_file()
+	Stats.is_in_tutorial = btn_continue.disabled
 	btn_continue.mouse_filter = Control.MOUSE_FILTER_IGNORE if not Stats.has_save_file() else Control.MOUSE_FILTER_STOP
 
 	# 1: SFX

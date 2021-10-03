@@ -1,6 +1,6 @@
 extends Spatial
 
-const DEBUGGING := true
+const DEBUGGING := false
 
 onready var gauge := find_node("HeatGauge") as HeatGauge
 onready var pot := find_node("Pot") as Pot
@@ -54,8 +54,13 @@ func _ready():
 	Stats.connect("coins_changed", self, "update_coins_label")
 	Stats.connect("stability_changed", self, "update_stability")
 	Stats.reset(true)
-	# Start paused
-	self.pause()
+
+	if Stats.is_in_tutorial:
+		self.pause(true, false)
+		anim_player.play("tutorial1")
+	else:
+		# Start paused
+		self.pause()
 
 	# 1: SFX
 	AudioServer.set_bus_volume_db(1, 0)
@@ -108,6 +113,7 @@ func _process(delta):
 
 
 func _unhandled_input(event) -> void:
+	if Stats.is_in_tutorial: return
 	if event.is_action_pressed("pause"):
 		self.pause(not get_tree().paused)
 		get_tree().set_input_as_handled()
@@ -318,3 +324,9 @@ func _on_WorldDecomposeTimer_timeout():
 		Stats.stability *= 0.9
 	else:
 		Stats.stability -= 0.02
+
+
+func _on_BtnQuitTutorial_pressed():
+	anim_player.play("tutorial2")
+	self.pause(false)
+	Stats.is_in_tutorial = false
