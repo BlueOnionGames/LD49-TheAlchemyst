@@ -191,6 +191,8 @@ func apply_upgrade(upgrade: Upgrade, apply_stats := true):
 				Stats.connect("autobrew_interval_changed", self, "set_autobrew_interval_label")
 				Stats.connect("autobrew_enabled_changed", self, "set_autobrew_timer")
 				self.brew_timer.wait_time = Stats.autobrew_interval
+				self.set_autobrew_timer(Stats.autobrew_enabled)
+				self.set_autobrew_interval_label(Stats.autobrew_interval)
 			_:
 				print("Unhandled upgrade identifier: %s" % upgrade.identifier)
 	if apply_stats:
