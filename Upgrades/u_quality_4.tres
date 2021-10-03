@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
+[ext_resource path="res://Upgrades/potion.png" type="Texture" id=3]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -15,6 +16,7 @@ name = "Potion Quality IV"
 description = "Better potions = more money per potion. Easy!"
 identifier = ""
 cost = 150
+texture = ExtResource( 3 )
 purchased = false
 order = 0
 single_purchase = true

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flame.svg-a4130064fe5cf86fe790fde4014e5ba4.stex"
+path="res://.import/range.png-7b3eb46f605873f707249c24529d7a94.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HeatGauge/flame.svg"
-dest_files=[ "res://.import/flame.svg-a4130064fe5cf86fe790fde4014e5ba4.stex" ]
+source_file="res://HeatGauge/range.png"
+dest_files=[ "res://.import/range.png-7b3eb46f605873f707249c24529d7a94.stex" ]
 
 [params]
 

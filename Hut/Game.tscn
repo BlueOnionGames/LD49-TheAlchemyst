@@ -285,7 +285,7 @@ position = Vector2( 489, 476 )
 
 [node name="ProgressCircle" parent="CanvasLayer" instance=ExtResource( 3 )]
 pause_mode = 1
-position = Vector2( 633, 251 )
+position = Vector2( 638, 251 )
 foreground_color = Color( 0.141176, 0.360784, 0.25098, 1 )
 
 [node name="btnSave" type="Button" parent="CanvasLayer"]

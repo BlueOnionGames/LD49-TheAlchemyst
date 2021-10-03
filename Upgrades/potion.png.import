@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/range.svg-a4cd7be5e1fb55261916881b83c5542b.stex"
+path="res://.import/potion.png-51d94d142ab156e6482d8877e3346efa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HeatGauge/range.svg"
-dest_files=[ "res://.import/range.svg-a4cd7be5e1fb55261916881b83c5542b.stex" ]
+source_file="res://Upgrades/potion.png"
+dest_files=[ "res://.import/potion.png-51d94d142ab156e6482d8877e3346efa.stex" ]
 
 [params]
 
