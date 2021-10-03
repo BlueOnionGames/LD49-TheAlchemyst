@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
@@ -21,14 +21,20 @@ name = "stability"
 multiplier = 0.8
 addition = 0.0
 
+[sub_resource type="Resource" id=4]
+script = ExtResource( 2 )
+name = "stir_range"
+multiplier = 0.95
+addition = 0.0
+
 [resource]
 script = ExtResource( 1 )
 name = "Hormones"
 description = "Apparently, potions brew 25% faster if you just add some simple hormones! How nice!"
 identifier = ""
-cost = 50
+cost = 200
 purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-effects = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
+effects = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]

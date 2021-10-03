@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
 name = "time_till_potion"
-multiplier = 0.66
+multiplier = 0.33
 addition = 0.0
 
 [sub_resource type="Resource" id=2]
@@ -21,14 +21,20 @@ name = "stability"
 multiplier = 0.75
 addition = 0.0
 
+[sub_resource type="Resource" id=4]
+script = ExtResource( 2 )
+name = "stir_range"
+multiplier = 0.9
+addition = 0.0
+
 [resource]
 script = ExtResource( 1 )
 name = "C10H15N"
 description = "You found another harmless reactant that makes it quicker to brew your potions. How convenient!"
 identifier = ""
-cost = 150
+cost = 3000
 purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-effects = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
+effects = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]

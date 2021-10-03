@@ -6,6 +6,7 @@ signal stir_range_changed
 signal danger_range_changed
 signal autobrew_interval_changed
 signal autobrew_enabled_changed
+signal stability_changed
 signal load_start
 signal load_done
 signal save_start
@@ -29,9 +30,9 @@ var time_till_bubbles := 0.5
 var explosion_trigger := 2.0
 var flame_randomness := 1.0
 var buildup_speed := 0.5
-var stability := 1.0
+var stability := 1.0 setget set_stability
 var autobrew_interval := 1.0 setget set_autobrew_interval
-var autobrew_enabled := true setget set_autobrew_enabled
+var autobrew_enabled := false setget set_autobrew_enabled
 var manual_stirs := 0
 var playtime := 0.0
 
@@ -56,6 +57,9 @@ func reset(skip_attributes := false) -> void:
 	self.emit_signal("coins_changed", self.coins)
 	self.emit_signal("stir_range_changed", self.stir_range)
 	self.emit_signal("danger_range_changed", self.danger_range)
+	self.emit_signal("autobrew_interval_changed", self.autobrew_interval)
+	self.emit_signal("autobrew_enabled_changed", self.autobrew_enabled)
+	self.emit_signal("stability_changed", self.stability)
 
 
 func set_upgrade_bought(upgrade: Upgrade) -> void:
@@ -94,29 +98,35 @@ func set_autobrew_enabled(enabled: bool) -> void:
 		self.emit_signal("autobrew_enabled_changed", autobrew_enabled)
 
 
+func set_stability(new_stability: float) -> void:
+	if !is_equal_approx(stability, new_stability):
+		stability = new_stability
+		self.emit_signal("stability_changed", stability)
+
+
 func get_attributes() -> Dictionary:
 	return {
+		"stability": self.stability,
+		"playtime": self.playtime,
 		"coins": self.coins,
 		"lifetime_coins": self.lifetime_coins,
+		"potions_brewed": self.potions_brewed,
+		"potions_per_batch": self.potions_per_batch,
+		"coins_per_potion": self.coins_per_potion,
+		"manual_stirs": self.manual_stirs,
 		"stir_decay": self.stir_decay,
 		"stir_strength": self.stir_strength,
 		"stir_range": self.stir_range,
 		"stir_speed": self.stir_speed,
 		"danger_range": self.danger_range,
-		"potions_brewed": self.potions_brewed,
-		"potions_per_batch": self.potions_per_batch,
-		"coins_per_potion": self.coins_per_potion,
 		"time_speedup": self.time_speedup,
 		"time_till_potion": self.time_till_potion,
 		"time_till_bubbles": self.time_till_bubbles,
 		"explosion_trigger": self.explosion_trigger,
 		"flame_randomness": self.flame_randomness,
 		"buildup_speed": self.buildup_speed,
-		"stability": self.stability,
 		"autobrew_interval": self.autobrew_interval,
 		"autobrew_enabled": self.autobrew_enabled,
-		"manual_stirs": self.manual_stirs,
-		"playtime": self.playtime,
 	}
 
 

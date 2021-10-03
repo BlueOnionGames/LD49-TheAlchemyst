@@ -2,29 +2,33 @@
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
-[ext_resource path="res://HeatGauge/flame.png" type="Texture" id=3]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-name = "flame_randomness"
-multiplier = 0.3
+name = "coins_per_potion"
+multiplier = 5.0
 addition = 0.0
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
 name = "stability"
-multiplier = 0.9
+multiplier = 0.5
+addition = 0.0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 2 )
+name = "danger_range"
+multiplier = 1.5
 addition = 0.0
 
 [resource]
 script = ExtResource( 1 )
-name = "Improved fire"
-description = "You discover a new way to make fire which allows you to create potions more consistently."
+name = "Secret Ingredient"
+description = "You discover a secret ingredient that makes customers pay more for your potions for some reason. I'm sure it'll all be fine though!"
 identifier = ""
-cost = 150
-texture = ExtResource( 3 )
+cost = 5000
 purchased = false
 order = 0
 single_purchase = true
 custom_effect = false
-effects = [ SubResource( 1 ), SubResource( 2 ) ]
+effects = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]

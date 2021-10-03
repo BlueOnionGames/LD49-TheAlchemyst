@@ -18,6 +18,9 @@ onready var brew_container := find_node("AutoBrewContainer") as Container
 onready var stats_label := find_node("StatsLabel") as RichTextLabel
 onready var pause_button := find_node("PauseButton") as Button
 
+onready var light1 := find_node("MainSceneLight1") as OmniLight
+onready var light2 := find_node("MainSceneLight2") as OmniLight
+
 export(String, FILE) var upgrade_dir := "res://Upgrades"
 
 var upgrades := []
@@ -27,9 +30,15 @@ var time_in_danger := 0.0
 var in_range := false
 var in_danger := false
 
-export(Color) var color_default := Color.white
-export(Color) var color_danger := Color.red
-export(Color) var color_range := Color.green
+var _liquid_default: Color
+var _light_default: Color
+
+export(Color) var color_default := Color(0.66, 0.66, 0.66)
+export(Color) var color_danger := Color(0.44, 0.15, 0.15)
+export(Color) var color_range := Color(0.14, 0.36, 0.25)
+export(Color) var liquid_hell_color := Color(0.44, 0, 0, 0.3)
+export(Color) var light_2_hell_color := Color(0.14, 0.36, 0.25)
+
 
 signal any_upgrade_bought
 signal potion_brewed
@@ -39,8 +48,11 @@ func _ready():
 	pot.emit_fire = true
 	pot.emit_bubbles = false
 	self.brew_container.visible = false
+	self._liquid_default = pot.liquid_color
+	self._light_default = light1.light_color
 	self.load_upgrades()
 	Stats.connect("coins_changed", self, "update_coins_label")
+	Stats.connect("stability_changed", self, "update_stability")
 	Stats.reset(true)
 	# Start paused
 	self.pause()
@@ -95,13 +107,22 @@ func _process(delta):
 			pot.set_buildup_strength(lerp(pot.buildup_strength, 0, delta))
 
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event.is_action_pressed("pause"):
 		self.pause(not get_tree().paused)
 		get_tree().set_input_as_handled()
 	elif event.is_action_pressed("back"):
 		self.return_to_menu()
 		get_tree().set_input_as_handled()
+
+
+func update_stability(stability: float) -> void:
+	if stability < 0.9:
+		pot.liquid_color = lerp(self._liquid_default, self.liquid_hell_color, min(1.0, 0.9 - stability + 0.6))
+		pot.bubble_color = pot.liquid_color
+		light1.light_color = lerp(light1.light_color, pot.liquid_color, min(1.0, 0.9 - stability + 0.6))
+		light2.light_color = lerp(light2.light_color, self.light_2_hell_color, min(1.0, 0.9 - stability + 0.6))
+	pot.liquid_light = stability < 0.5
 
 
 func load_upgrades() -> void:
@@ -187,6 +208,8 @@ func apply_upgrade(upgrade: Upgrade, apply_stats := true):
 		match upgrade.identifier:
 			"dbg_spawn_label":
 				self.label_spawner.spawn_label("Test")
+			"black_hole":
+				$WorldDecomposeTimer.start()
 			"auto_brewer":
 				self.brew_container.visible = true
 				Stats.connect("autobrew_interval_changed", self.brew_timer, "set_wait_time")
@@ -195,6 +218,7 @@ func apply_upgrade(upgrade: Upgrade, apply_stats := true):
 				self.brew_timer.wait_time = Stats.autobrew_interval
 				self.set_autobrew_timer(Stats.autobrew_enabled)
 				self.set_autobrew_interval_label(Stats.autobrew_interval)
+				Stats.autobrew_enabled = true
 			_:
 				print("Unhandled upgrade identifier: %s" % upgrade.identifier)
 	if apply_stats:
@@ -214,10 +238,18 @@ func _on_btnSave_pressed():
 
 func reset():
 	self.pause(true, true)
+	self.anim_player.pause_mode = Node.PAUSE_MODE_PROCESS
+	self.anim_player.play("RESET")
+	self.pot.liquid_color = self._liquid_default
+	self.pot.bubble_color = self._liquid_default
+	self.light1.light_color = self._light_default
+	self.light2.light_color = self._light_default
+	self.get_tree().call_group("Resetable", "reset")
+	self.brew_timer.stop()
+	$WorldDecomposeTimer.stop()
+	yield(get_tree(), "idle_frame")
 	self.upgrades = []
 	self.load_upgrades()
-	self.anim_player.play("RESET")
-	self.get_tree().call_group("Resetable", "reset")
 
 
 func _on_BtnRestart_pressed():
@@ -277,3 +309,12 @@ func return_to_menu():
 	if get_tree().paused:
 		get_tree().set_pause(false)
 	get_tree().change_scene("res://Menu/MainMenu.tscn")
+
+
+func _on_WorldDecomposeTimer_timeout():
+	if Stats.stability < 0:
+		anim_player.play("portal_opening")
+	elif Stats.stability > 0.1:
+		Stats.stability *= 0.9
+	else:
+		Stats.stability -= 0.02

@@ -282,12 +282,12 @@ emit_bubbles = true
 liquid_light = true
 
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
 pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 0.914868, 0.403753, 0, -0.403753, 0.914868, 0, 2.22885, 3.53498 )
 environment = SubResource( 6 )
+current = true
 fov = 50.0
 __meta__ = {
 "_editor_description_": ""

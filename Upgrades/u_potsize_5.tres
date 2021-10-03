@@ -1,24 +1,22 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
-[ext_resource path="res://Upgrades/potion.png" type="Texture" id=3]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-name = "coins_per_potion"
-multiplier = 2.5
+name = "potions_per_batch"
+multiplier = 5.0
 addition = 0.0
 
 [resource]
 script = ExtResource( 1 )
-name = "Potion Quality III"
-description = "Better potions = more money per potion. Easy!"
-identifier = ""
-cost = 100
-texture = ExtResource( 3 )
+name = "Black Hole Technology"
+description = "Somehow you managed to fit a black hole inside your pot, allowing you to brew a ludicrous amount of potions per batch."
+identifier = "black_hole"
+cost = 10000
 purchased = false
 order = 0
 single_purchase = true
-custom_effect = false
+custom_effect = true
 effects = [ SubResource( 1 ) ]

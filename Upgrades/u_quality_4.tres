@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 name = "Potion Quality IV"
 description = "Better potions = more money per potion. Easy!"
 identifier = ""
-cost = 150
+cost = 1000
 texture = ExtResource( 3 )
 purchased = false
 order = 0

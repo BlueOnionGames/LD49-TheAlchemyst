@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Quicksilver/Regular_72.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://select.mp3" type="AudioStream" id=14]
 [ext_resource path="res://gold.mp3" type="AudioStream" id=15]
 [ext_resource path="res://Pot/potion_done.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Pot/fire_particles.png" type="Texture" id=17]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -146,6 +147,198 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("CPUParticles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CPUParticles:amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CPUParticles:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.811765, 0.811765, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CPUParticles:initial_velocity")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CPUParticles:tangential_accel")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Camera:translation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.29919, 3.69436 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Camera:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -23.8229, 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Camera:environment:dof_blur_near_enabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CanvasLayer/LeftContainer:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CanvasLayer/RightContainer:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Pot/Spoon:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("CanvasLayer/GameWonMsg:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("CanvasLayer/LabelSpawner:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Pot/FireAudio:unit_db")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("MainAnimationPlayer:pause_mode")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("CanvasLayer/Tooltip:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "gameover"
@@ -225,31 +418,297 @@ tracks/5/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=22]
+resource_name = "portal_opening"
+length = 21.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CPUParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CPUParticles:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 3, 6, 10, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 10, 20, 40, 80 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.811765, 0.811765, 0.141176 ), Color( 1, 0.811765, 0.811765, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CPUParticles:initial_velocity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.0, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CPUParticles:tangential_accel")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 6, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 10.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Camera:translation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 9, 11.6, 13.7, 15, 17, 18, 19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.29919, 3.69436 ), Vector3( 0, 2.78892, 2.43464 ), Vector3( 0, 3.00764, 1.41718 ), Vector3( 0, 2.25201, 0.787325 ), Vector3( 0, 1.5758, 0.283435 ), Vector3( 0, 1.21407, 0.181403 ), Vector3( 0, 1.0194, 0.141159 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 9, 15, 17, 18, 19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -23.8229, 0, 0 ), Vector3( -62.81, 0, 0 ), Vector3( -72.571, 0, 0 ), Vector3( -78.32, 0, 0 ), Vector3( -78.32, 0, 0 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true, false ],
+"method": "pause"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/LeftContainer:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasLayer/RightContainer:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CanvasLayer/HeatGauge:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("CanvasLayer/ProgressCircle:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Pot/Spoon:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 17 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("CanvasLayer/GameWonMsg:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 20 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CanvasLayer/LabelSpawner:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "method"
+tracks/15/path = NodePath("MainAnimationPlayer")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 20.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "stop"
+} ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Pot/FireAudio:unit_db")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.7, 3, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 4.0, 6.0 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("MainAnimationPlayer:pause_mode")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 20.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("CanvasLayer/Tooltip:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+params_billboard_keep_scale = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 17 )
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="QuadMesh" id=21]
+material = SubResource( 20 )
+
+[sub_resource type="Curve" id=23]
+_data = [ Vector2( 0, 0.667045 ), 0.0, 2.67273, 0, 0, Vector2( 1, 0.130682 ), 0.0, 0.0, 0, 0 ]
+
 [node name="Game" type="Spatial"]
 pause_mode = 2
 script = ExtResource( 8 )
-color_default = Color( 0.658824, 0.658824, 0.658824, 1 )
-color_danger = Color( 0.439216, 0.145098, 0.145098, 1 )
-color_range = Color( 0.141176, 0.360784, 0.25098, 1 )
+light_2_hell_color = Color( 0.376471, 0.4, 0.2, 1 )
 
 [node name="Hut" parent="." instance=ExtResource( 13 )]
 
-[node name="books mirrored" parent="Hut/Bookcase" index="1"]
-transform = Transform( 28.1676, 0, 0, 0, 2.63953, 0, 0, 0, 28.1676, 7.94629, 0.207803, 5.595 )
-
 [node name="Pot" parent="." instance=ExtResource( 5 )]
 pause_mode = 1
-liquid_color = Color( 0.74902, 0.301961, 0.301961, 0.501961 )
+overheat_color = Color( 0.541176, 0, 0, 1 )
 
 [node name="Camera" type="Camera" parent="."]
 pause_mode = 1
-transform = Transform( 1, 0, 0, 0, 0.914868, 0.403753, 0, -0.403753, 0.914868, 0, 2.29919, 3.69436 )
+transform = Transform( 1, 0, 0, 0, 0.914798, 0.403911, 0, -0.403911, 0.914798, 0, 2.29919, 3.69436 )
 environment = ExtResource( 7 )
+current = true
 fov = 50.0
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="OmniLight" type="OmniLight" parent="."]
+[node name="MainSceneLight1" type="OmniLight" parent="."]
 pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75652, 2.03965, 1.35963 )
+light_color = Color( 0.541176, 0.482353, 0.372549, 1 )
+light_energy = 1.5
+shadow_enabled = true
+shadow_bias = 0.1
+omni_range = 5.83771
+
+[node name="MainSceneLight2" type="OmniLight" parent="."]
+pause_mode = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.22682, 1.60238, 1.40491 )
 light_color = Color( 0.541176, 0.482353, 0.372549, 1 )
 shadow_enabled = true
 shadow_bias = 0.1
@@ -598,6 +1057,67 @@ custom_fonts/font = ExtResource( 2 )
 text = "LOAD LAST SAVE"
 flat = true
 
+[node name="GameWonMsg" type="HBoxContainer" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameWonMsg"]
+margin_left = 389.0
+margin_right = 891.0
+margin_bottom = 720.0
+mouse_filter = 2
+alignment = 1
+
+[node name="LblGameWon" type="Label" parent="CanvasLayer/GameWonMsg/VBoxContainer"]
+margin_top = 253.0
+margin_right = 502.0
+margin_bottom = 340.0
+custom_fonts/font = ExtResource( 1 )
+text = "Well done!"
+align = 1
+
+[node name="LblGameWon2" type="Label" parent="CanvasLayer/GameWonMsg/VBoxContainer"]
+margin_top = 344.0
+margin_right = 502.0
+margin_bottom = 387.0
+custom_fonts/font = ExtResource( 2 )
+text = "You released all evil spirits upon this world!
+Thanks!"
+align = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/GameWonMsg/VBoxContainer"]
+margin_top = 391.0
+margin_right = 502.0
+margin_bottom = 407.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="BtnRestart" type="Button" parent="CanvasLayer/GameWonMsg/VBoxContainer"]
+margin_top = 411.0
+margin_right = 502.0
+margin_bottom = 437.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "RESTART"
+flat = true
+
+[node name="BtnMainMenu" type="Button" parent="CanvasLayer/GameWonMsg/VBoxContainer"]
+margin_top = 441.0
+margin_right = 502.0
+margin_bottom = 467.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Back to main menu"
+flat = true
+
 [node name="Tooltip" parent="CanvasLayer" instance=ExtResource( 6 )]
 visible = false
 
@@ -646,6 +1166,7 @@ __meta__ = {
 pause_mode = 2
 anims/RESET = SubResource( 9 )
 anims/gameover = SubResource( 10 )
+anims/portal_opening = SubResource( 22 )
 
 [node name="SaveTimer" type="Timer" parent="."]
 pause_mode = 1
@@ -667,7 +1188,34 @@ bus = "SFX"
 
 [node name="BrewingAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
+volume_db = -2.0
 bus = "SFX"
+
+[node name="WorldDecomposeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+pause_mode = 2
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.691255, 0 )
+emitting = false
+amount = 5
+mesh = SubResource( 21 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.2, 0, 0.2 )
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, -2, 0 )
+initial_velocity = 2.0
+angular_velocity = 100.0
+angular_velocity_random = 0.2
+radial_accel = 2.0
+damping = 1.0
+scale_amount = 0.5
+scale_amount_curve = SubResource( 23 )
+color = Color( 1, 0.811765, 0.811765, 1 )
+anim_speed = 1.0
+anim_speed_random = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [connection signal="any_upgrade_bought" from="." to="UpgradeAudio" method="play"]
 [connection signal="potion_brewed" from="." to="BrewingAudio" method="play"]
@@ -690,9 +1238,14 @@ bus = "SFX"
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="." method="_on_BtnReload_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnRestart" to="UIAudio" method="play"]
+[connection signal="pressed" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnMainMenu" to="UIAudio" method="play"]
+[connection signal="pressed" from="CanvasLayer/GameWonMsg/VBoxContainer/BtnMainMenu" to="." method="return_to_menu"]
 [connection signal="mouse_entered" from="CanvasLayer/PauseButton" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="pause"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_SaveTimer_timeout"]
 [connection signal="timeout" from="AutoBrewTimer" to="Pot" method="stir"]
+[connection signal="timeout" from="WorldDecomposeTimer" to="." method="_on_WorldDecomposeTimer_timeout"]
 
-[editable path="Hut"]
+[editable path="Pot"]

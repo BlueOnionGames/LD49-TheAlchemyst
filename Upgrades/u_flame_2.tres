@@ -5,22 +5,22 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-name = "explosion_trigger"
-multiplier = 1.5
+name = "flame_randomness"
+multiplier = 0.3
 addition = 0.0
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
-name = "stir_strength"
-multiplier = 0.6
+name = "stability"
+multiplier = 0.9
 addition = 0.0
 
 [resource]
 script = ExtResource( 1 )
-name = "Reinforced Steel Pot"
-description = "An even sturdier pot, taking much longer to explode but also much longer to heat up."
+name = "Improved formula"
+description = "Your new and improved formula makes it easier to brew more consistent potions."
 identifier = ""
-cost = 200
+cost = 1500
 purchased = false
 order = 0
 single_purchase = true
