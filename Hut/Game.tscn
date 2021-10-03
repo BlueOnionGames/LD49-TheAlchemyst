@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Quicksilver/Regular_72.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=2]
@@ -59,6 +59,14 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 1
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 35
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 5
 font_data = ExtResource( 9 )
 
 [sub_resource type="Animation" id=9]
@@ -503,6 +511,7 @@ align = 1
 margin_top = 389.0
 margin_right = 316.0
 margin_bottom = 415.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -519,6 +528,7 @@ rect_min_size = Vector2( 0, 128 )
 margin_top = 551.0
 margin_right = 316.0
 margin_bottom = 577.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -613,6 +623,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+margin_left = 621.0
+margin_top = 498.0
+margin_right = 656.0
+margin_bottom = 546.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_hover = Color( 1, 0.819608, 0, 1 )
+custom_fonts/font = SubResource( 19 )
+shortcut_in_tooltip = false
+text = "||"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MainAnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
 anims/RESET = SubResource( 9 )
@@ -641,6 +667,7 @@ pause_mode = 1
 [connection signal="pressed" from="CanvasLayer/PauseMsg/VBoxContainer/BtnMainMenu" to="." method="return_to_menu"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="." method="_on_BtnReload_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="pause"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_SaveTimer_timeout"]
 [connection signal="timeout" from="AutoBrewTimer" to="Pot" method="stir"]
 
