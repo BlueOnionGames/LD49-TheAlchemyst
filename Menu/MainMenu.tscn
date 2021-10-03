@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Explora/Regular_172.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_40.tres" type="DynamicFont" id=2]
@@ -10,6 +10,12 @@
 [ext_resource path="res://Menu/twitter_hover.svg" type="Texture" id=8]
 [ext_resource path="res://Menu/twitch_hover.svg" type="Texture" id=9]
 [ext_resource path="res://Menu/MainMenu.gd" type="Script" id=10]
+
+[sub_resource type="InputEventAction" id=1]
+action = "back"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -91,6 +97,8 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_colors/font_color_hover = Color( 1, 0.913725, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 2 )
 text = "Exit to desktop"
 flat = true
 

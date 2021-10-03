@@ -92,6 +92,11 @@ func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		self.pause(not get_tree().paused)
 		get_tree().set_input_as_handled()
+	elif event.is_action_pressed("back"):
+		if get_tree().paused:
+			get_tree().set_pause(false)
+		get_tree().change_scene("res://Menu/MainMenu.tscn")
+		get_tree().set_input_as_handled()
 
 
 func load_upgrades() -> void:
