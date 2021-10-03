@@ -31,6 +31,7 @@ func _on_Quit_pressed():
 
 
 func _on_New_Game_pressed():
+	Stats.reset()
 	get_tree().change_scene_to(game_scene)
 
 
