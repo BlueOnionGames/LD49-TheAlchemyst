@@ -217,6 +217,9 @@ tracks/5/keys = {
 [node name="Game" type="Spatial"]
 pause_mode = 2
 script = ExtResource( 8 )
+color_default = Color( 0.658824, 0.658824, 0.658824, 1 )
+color_danger = Color( 0.439216, 0.145098, 0.145098, 1 )
+color_range = Color( 0.141176, 0.360784, 0.25098, 1 )
 
 [node name="Hut" parent="." instance=ExtResource( 13 )]
 
@@ -271,6 +274,7 @@ position = Vector2( 489, 476 )
 
 [node name="ProgressCircle" parent="CanvasLayer" instance=ExtResource( 3 )]
 pause_mode = 1
+foreground_color = Color( 0.141176, 0.360784, 0.25098, 1 )
 
 [node name="btnSave" type="Button" parent="CanvasLayer"]
 pause_mode = 2

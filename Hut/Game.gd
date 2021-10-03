@@ -26,6 +26,10 @@ var time_in_danger := 0.0
 var in_range := false
 var in_danger := false
 
+export(Color) var color_default := Color.white
+export(Color) var color_danger := Color.red
+export(Color) var color_range := Color.green
+
 
 func _ready():
 	pot.emit_fire = true
@@ -67,11 +71,11 @@ func _process(delta):
 		time_in_danger += delta
 
 	if self.in_range:
-		gauge.range_color = Color.green
+		gauge.range_color = color_range
 	elif self.in_danger:
-		gauge.range_color = Color.red
+		gauge.range_color = color_danger
 	else:
-		gauge.range_color = Color.white
+		gauge.range_color = color_default
 
 	if self.in_danger:
 		pot.set_buildup_strength(pot.buildup_strength + delta * Stats.buildup_speed)
