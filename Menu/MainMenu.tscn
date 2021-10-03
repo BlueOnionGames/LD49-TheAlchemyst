@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Explora/Regular_172.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_40.tres" type="DynamicFont" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Menu/MainMenu.gd" type="Script" id=10]
 [ext_resource path="res://Hut/Hut.glb" type="PackedScene" id=11]
 [ext_resource path="res://Pot/Pot.tscn" type="PackedScene" id=12]
+[ext_resource path="res://select.mp3" type="AudioStream" id=13]
 
 [sub_resource type="InputEventAction" id=1]
 action = "back"
@@ -296,10 +297,23 @@ playback_speed = 0.5
 anims/RESET = SubResource( 3 )
 anims/rotate = SubResource( 4 )
 
+[node name="UIAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -15.0
+pitch_scale = 0.8
+autoplay = true
+bus = "UI"
+
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/VBoxContainer/Continue" to="UIAudio" method="play"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/VBoxContainer/New Game" to="UIAudio" method="play"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/New Game" to="." method="_on_New_Game_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/VBoxContainer/Quit" to="UIAudio" method="play"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/Itch" to="UIAudio" method="play"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Itch" to="." method="_on_Itch_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/Twitter" to="UIAudio" method="play"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Twitter" to="." method="_on_Twitter_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/Twitch" to="UIAudio" method="play"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Twitch" to="." method="_on_Twitch_pressed"]
 [connection signal="ready" from="AnimationPlayer" to="AnimationPlayer" method="play" binds= [ "rotate" ]]
