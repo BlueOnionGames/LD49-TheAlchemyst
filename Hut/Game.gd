@@ -93,6 +93,7 @@ func _unhandled_input(event):
 		self.pause(not get_tree().paused)
 		get_tree().set_input_as_handled()
 	elif event.is_action_pressed("back"):
+		Stats.save_stats()
 		if get_tree().paused:
 			get_tree().set_pause(false)
 		get_tree().change_scene("res://Menu/MainMenu.tscn")
