@@ -12,7 +12,6 @@ func _ready() -> void:
 
 func openUrl(url: String) -> void:
 	OS.shell_open(url)
-	# HTML5?: JavaScript.eval("window.open(url, '_blank');")
 
 
 func _on_Itch_pressed():
