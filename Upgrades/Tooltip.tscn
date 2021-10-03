@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://coin.png" type="Texture" id=1]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Upgrades/Tooltip.gd" type="Script" id=3]
 [ext_resource path="res://Quicksilver/Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.25098 )
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 2
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -14,6 +19,7 @@ pause_mode = 2
 margin_right = 308.0
 margin_bottom = 99.0
 mouse_filter = 2
+custom_styles/panel = SubResource( 2 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
