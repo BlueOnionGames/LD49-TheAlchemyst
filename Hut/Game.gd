@@ -31,6 +31,8 @@ export(Color) var color_default := Color.white
 export(Color) var color_danger := Color.red
 export(Color) var color_range := Color.green
 
+signal any_upgrade_bought
+
 
 func _ready():
 	pot.emit_fire = true

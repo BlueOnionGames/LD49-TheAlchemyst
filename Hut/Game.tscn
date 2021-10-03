@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Quicksilver/Regular_72.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Quicksilver/Regular_16.tres" type="DynamicFont" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Pot/smoke_particles.png" type="Texture" id=11]
 [ext_resource path="res://coin.png" type="Texture" id=12]
 [ext_resource path="res://Hut/Hut.glb" type="PackedScene" id=13]
+[ext_resource path="res://select.mp3" type="AudioStream" id=14]
+[ext_resource path="res://gold.mp3" type="AudioStream" id=15]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -652,6 +654,17 @@ autostart = true
 [node name="AutoBrewTimer" type="Timer" parent="."]
 pause_mode = 1
 
+[node name="UIAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -15.0
+pitch_scale = 0.8
+bus = "UI"
+
+[node name="UpgradeAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX"
+
+[connection signal="any_upgrade_bought" from="." to="UpgradeAudio" method="play"]
 [connection signal="stirred" from="Pot" to="CanvasLayer/HeatGauge" method="stir"]
 [connection signal="stir_in_danger" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_in_danger"]
 [connection signal="stir_in_range" from="CanvasLayer/HeatGauge" to="." method="_on_HeatGauge_stir_in_range"]
@@ -663,10 +676,15 @@ pause_mode = 1
 [connection signal="gui_input" from="CanvasLayer/LeftContainer/AutoBrewContainer/AutoBrewLabel" to="." method="_on_AutobrewerLabel_gui_input"]
 [connection signal="pressed" from="CanvasLayer/LeftContainer/AutoBrewContainer/HBoxContainer/BtnAutoBrewIntervalMinus" to="." method="_on_BtnAutoBrewIntervalMinus_pressed"]
 [connection signal="pressed" from="CanvasLayer/LeftContainer/AutoBrewContainer/HBoxContainer/BtnAutoBrewIntervalPlus" to="." method="_on_BtnAutoBrewIntervalPlus_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PauseMsg/VBoxContainer/BtnResume" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/PauseMsg/VBoxContainer/BtnResume" to="." method="pause" binds= [ false, true ]]
+[connection signal="mouse_entered" from="CanvasLayer/PauseMsg/VBoxContainer/BtnMainMenu" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/PauseMsg/VBoxContainer/BtnMainMenu" to="." method="return_to_menu"]
+[connection signal="mouse_entered" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnRestart" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnRestart" to="." method="_on_BtnRestart_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/GameOverMsg/VBoxContainer/BtnReload" to="." method="_on_BtnReload_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PauseButton" to="UIAudio" method="play"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="pause"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_SaveTimer_timeout"]
 [connection signal="timeout" from="AutoBrewTimer" to="Pot" method="stir"]

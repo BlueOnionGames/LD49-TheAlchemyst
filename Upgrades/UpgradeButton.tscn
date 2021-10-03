@@ -59,6 +59,8 @@ custom_constants/margin_left = 4
 custom_constants/margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="ButtonContainer/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
 margin_right = 1276.0
 margin_bottom = 716.0
 mouse_filter = 2
