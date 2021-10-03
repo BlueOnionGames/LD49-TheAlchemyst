@@ -42,6 +42,9 @@ func _ready():
 	# Start paused
 	self.pause()
 
+	# 1: SFX
+	AudioServer.set_bus_volume_db(1, 0)
+
 	if not DEBUGGING:
 		$CanvasLayer/btnSave.visible = false
 		$CanvasLayer/btnReset.visible = false

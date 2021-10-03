@@ -9,6 +9,9 @@ func _ready() -> void:
 	btn_continue.disabled = not Stats.has_save_file()
 	btn_continue.mouse_filter = Control.MOUSE_FILTER_IGNORE if not Stats.has_save_file() else Control.MOUSE_FILTER_STOP
 
+	# 1: SFX
+	AudioServer.set_bus_volume_db(1, -15)
+
 
 func openUrl(url: String) -> void:
 	OS.shell_open(url)
