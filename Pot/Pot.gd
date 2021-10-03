@@ -22,8 +22,21 @@ onready var liquid := find_node("Liquid") as CSGMesh
 onready var liquid_particles := find_node("LiquidParticles") as CPUParticles
 onready var fire_particles := find_node("FireParticles") as CPUParticles
 
+onready var liquid_audio1 := find_node("LiquidAudio1") as AudioStreamPlayer3D
+onready var liquid_audio2 := find_node("LiquidAudio2") as AudioStreamPlayer3D
+onready var bubbles_timer := find_node("BubblesTimer") as Timer
+
+var bubble_sounds := [
+	preload("res://Pot/bubble1.mp3"),
+	preload("res://Pot/bubble2.mp3"),
+	preload("res://Pot/bubble3.mp3"),
+	preload("res://Pot/bubble4.mp3"),
+	preload("res://Pot/bubble5.mp3"),
+]
+
 var _pot_default: Color
 var _border_default: Color
+var _bubble_audio_index := 0
 
 signal stirred
 
@@ -86,6 +99,15 @@ func stop_buildup() -> void:
 
 func set_bubbles(bubbles: bool) -> void:
 	emit_bubbles = bubbles
+	if liquid_audio1 && liquid_audio2 && liquid_audio1.playing != bubbles:
+		liquid_audio1.playing = bubbles
+		liquid_audio2.playing = bubbles
+#	self.set_random_bubble_sound()
+	if bubbles_timer:
+		if bubbles && bubbles_timer.is_stopped():
+			bubbles_timer.start()
+		else:
+			bubbles_timer.stop()
 	if liquid_particles:
 		liquid_particles.emitting = emit_bubbles
 
@@ -116,3 +138,17 @@ func set_liquid_light(light: bool) -> void:
 	if pot_light:
 		pot_light.visible = liquid_light
 
+
+func set_random_bubble_sound():
+	if liquid_audio1 != null && liquid_audio2:
+		print("BUBBLE")
+		var was_playing := liquid_audio1.playing
+		var size := bubble_sounds.size()
+		_bubble_audio_index = (_bubble_audio_index + 1) % 2
+		match _bubble_audio_index:
+			0:
+				liquid_audio1.stream = bubble_sounds[floor(size * randf())]
+				liquid_audio1.playing = was_playing
+			1:
+				liquid_audio2.stream = bubble_sounds[floor(size * randf())]
+				liquid_audio2.playing = was_playing

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bubble3.mp3-7735b0f19ca5f3296811342417144534.mp3str"
+
+[deps]
+
+source_file="res://Pot/bubble3.mp3"
+dest_files=[ "res://.import/bubble3.mp3-7735b0f19ca5f3296811342417144534.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
