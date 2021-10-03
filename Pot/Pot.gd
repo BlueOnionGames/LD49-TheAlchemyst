@@ -45,9 +45,10 @@ func _unhandled_input(event) -> void:
 		get_tree().set_input_as_handled()
 
 
-func stir() -> void:
+func stir(only_spoon := false) -> void:
 	anim_spoon.play("stir", -1, Stats.stir_speed)
-	anim_pot.play("hiteffect")
+	if not only_spoon:
+		anim_pot.play("hiteffect")
 	self.emit_signal("stirred")
 
 func reset() -> void:
@@ -84,7 +85,8 @@ func stop_buildup() -> void:
 
 func set_bubbles(bubbles: bool) -> void:
 	emit_bubbles = bubbles
-	liquid_particles.emitting = emit_bubbles
+	if liquid_particles:
+		liquid_particles.emitting = emit_bubbles
 
 
 func set_fire(fire: bool) -> void:
@@ -110,5 +112,6 @@ func set_liquid_color(color: Color) -> void:
 
 func set_liquid_light(light: bool) -> void:
 	liquid_light = light
-	pot_light.visible = liquid_light
+	if pot_light:
+		pot_light.visible = liquid_light
 
