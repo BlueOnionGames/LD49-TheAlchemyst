@@ -290,7 +290,7 @@ func set_autobrew_timer(enabled: bool) -> void:
 
 
 func set_autobrew_interval_label(interval: float) -> void:
-	self.brew_interval_lbl.text = "%.1f" % interval
+	self.brew_interval_lbl.text = "%.1f sec" % interval
 
 
 func _on_AutobrewerLabel_gui_input(event: InputEvent) -> void:
