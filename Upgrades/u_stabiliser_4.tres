@@ -23,6 +23,7 @@ identifier = ""
 cost = 500
 purchased = false
 order = 0
+level = 4
 single_purchase = true
 custom_effect = false
 effects = [ SubResource( 1 ), SubResource( 2 ) ]

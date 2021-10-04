@@ -19,6 +19,7 @@ cost = 100
 texture = ExtResource( 3 )
 purchased = false
 order = 0
+level = 3
 single_purchase = true
 custom_effect = false
 effects = [ SubResource( 1 ) ]

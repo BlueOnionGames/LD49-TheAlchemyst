@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Upgrades/StatEffect.gd" type="Script" id=2]
+[ext_resource path="res://Upgrades/spoon.png" type="Texture" id=3]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -21,8 +22,10 @@ name = "Bigger Spoon"
 description = "Everybody knows you can brew potions way easier if you use a bigger spoon."
 identifier = ""
 cost = 75
+texture = ExtResource( 3 )
 purchased = false
 order = 0
+level = 1
 single_purchase = true
 custom_effect = false
 effects = [ SubResource( 1 ), SubResource( 2 ) ]

@@ -8,6 +8,7 @@ onready var icon := find_node("TextureRect") as TextureRect
 onready var button := find_node("TextureButton") as TextureButton
 onready var bought_check := find_node("TexBought") as TextureRect
 onready var button_container := find_node("ButtonContainer") as Container
+onready var level_image := find_node("TexLevel") as TextureRect
 
 signal upgrade_hover
 signal upgrade_hover_exited
@@ -28,6 +29,20 @@ func set_upgrade(upgr: Resource) -> void:
 		upgrade = upgrade_res as Upgrade
 		if upgrade.texture != null:
 			self.icon.texture = upgrade.texture
+		if self.level_image:
+			var tex: Texture
+			match upgrade.level:
+				1:
+					tex = preload("res://Upgrades/lvl_1.png")
+				2:
+					tex = preload("res://Upgrades/lvl_2.png")
+				3:
+					tex = preload("res://Upgrades/lvl_3.png")
+				4:
+					tex = preload("res://Upgrades/lvl_4.png")
+				_:
+					self.level_image.visible = false
+			self.level_image.texture = tex
 		if upgrade.purchased:
 			self.disable()
 			self.visible = true
