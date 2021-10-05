@@ -1,6 +1,6 @@
 extends Spatial
 
-const DEBUGGING := true
+const DEBUGGING := false
 
 onready var gauge := find_node("HeatGauge") as HeatGauge
 onready var pot := find_node("Pot") as Pot
