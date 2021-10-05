@@ -1,0 +1,17 @@
+Possible future updates:
+* Move bg based on stability
+* Shelf with potions in background?
+* Rocks and wood around fire
+* Achievements?
+
+
+
+
+Post-compo:
+* Export macOS builds
+* Pot sometimes remains red in Windows build
+
+
+Post on r/incremental_games
+
+
